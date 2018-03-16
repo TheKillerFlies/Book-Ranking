@@ -14,10 +14,12 @@ Features:
 
 | Name of Feature  | Owner | Estimated time | Actual time | Estimated time Unit Test | Actual time Unit Test |
 | -------------    | ------------- |-------------    | ------------- |-------------    | -------------       |
-| User registration| Iskra, Kristiyan, Dobromir|  12h |      ?         |    2h    |          ?               |
-| Log in         | Iskra, Kristiyan, Dobromir  |  10h |      ?         |    1h    |          ?               |
-| Rating books   | Iskra, Kristiyan, Dobromir  |  30h |      ?         |    5h    |          ?               |
+| Database creation| Iskra, Kristiyan, Dobromir|  4h |      ?         |    4h    |          ?               |
+| Search books   | Iskra, Kristiyan, Dobromir  | 6h |      ?         |    4h    |          ?               |
 | Adding books   | Iskra, Kristiyan, Dobromir  |  13h |      ?         |    4h    |          ?               |
 | Deleting books   | Iskra, Kristiyan, Dobromir  |  7h |      ?         |    2h    |          ?              |
+| Rating books   | Iskra, Kristiyan, Dobromir  |  20h |      ?         |    5h    |          ?               |
 | Private favorite books   | Iskra, Kristiyan, Dobromir  |  14h |      ?         |    2h    |          ?     |
-| Generate pdf with info about all users  | Iskra, Kristiyan, Dobromir  |  77h |      ?         |    33h    |          ?     |
+| User registration| Iskra, Kristiyan, Dobromir|  12h |      ?         |    2h    |          ?               |
+| Log in         | Iskra, Kristiyan, Dobromir  |  10h |      ?         |    1h    |          ?               |
+| Generate pdf with info about all users  | Iskra, Kristiyan, Dobromir  |  4h |      ?         |    2h    |          ?     |
