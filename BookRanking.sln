@@ -1,13 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRanking.Data", "BookRanking.Data\BookRanking.Data.csproj", "{B5B4ADF2-6CB7-484E-8EE7-E349B7D3021D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRanking.Client", "BookRanking.Client\BookRanking.Client.csproj", "{964229EE-4365-453F-82AD-CC0F77ACEA5A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRanking.Context", "BookRanking.Context\BookRanking.Context.csproj", "{FE284570-B1E1-4792-996F-08874CDBDD97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRanking.DTO", "BookRanking.DTO\BookRanking.DTO.csproj", "{479F6730-D7A6-44E9-AB94-6E1B1A087BE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRanking.Logic", "BookRanking.Logic\BookRanking.Logic.csproj", "{281B40D8-8054-4EF1-A538-2E2C0CD03E04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRanking.Common", "BookRanking.Common\BookRanking.Common.csproj", "{43939565-06A1-427D-B892-C391B406F878}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookRanking.Tests", "BookRanking.Tests\BookRanking.Tests.csproj", "{8CE2515F-6991-4277-9364-BC209F7219F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +35,22 @@ Global
 		{FE284570-B1E1-4792-996F-08874CDBDD97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE284570-B1E1-4792-996F-08874CDBDD97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE284570-B1E1-4792-996F-08874CDBDD97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{479F6730-D7A6-44E9-AB94-6E1B1A087BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{479F6730-D7A6-44E9-AB94-6E1B1A087BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{479F6730-D7A6-44E9-AB94-6E1B1A087BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{479F6730-D7A6-44E9-AB94-6E1B1A087BE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{281B40D8-8054-4EF1-A538-2E2C0CD03E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{281B40D8-8054-4EF1-A538-2E2C0CD03E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{281B40D8-8054-4EF1-A538-2E2C0CD03E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{281B40D8-8054-4EF1-A538-2E2C0CD03E04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43939565-06A1-427D-B892-C391B406F878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43939565-06A1-427D-B892-C391B406F878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43939565-06A1-427D-B892-C391B406F878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43939565-06A1-427D-B892-C391B406F878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE2515F-6991-4277-9364-BC209F7219F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE2515F-6991-4277-9364-BC209F7219F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE2515F-6991-4277-9364-BC209F7219F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE2515F-6991-4277-9364-BC209F7219F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BookRankingDbContext.cs" />
+    <Compile Include="IBookRankingDbContext.cs" />
     <Compile Include="Migrations\201803161151507_Initial.cs" />
     <Compile Include="Migrations\201803161151507_Initial.Designer.cs">
       <DependentUpon>201803161151507_Initial.cs</DependentUpon>

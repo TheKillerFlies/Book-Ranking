@@ -3,7 +3,7 @@ using BookRanking.Data.Models;
 
 namespace BookRanking.Context
 {
-    public class BookRankingDbContext : DbContext
+    public class BookRankingDbContext : DbContext, IBookRankingDbContext
     {
         public BookRankingDbContext() : base("BookRanking")
         {

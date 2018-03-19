@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BookRanking.Data.Models
 {
@@ -12,6 +7,7 @@ namespace BookRanking.Data.Models
         public Author()
         {
             this.Books = new HashSet<Book>();
+            this.Publishers = new HashSet<Publisher>();
         }
 
         public int Id { get; set; }
@@ -19,9 +15,11 @@ namespace BookRanking.Data.Models
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-        
+
         public string Alias { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }
+
+        public virtual ICollection<Publisher> Publishers { get; set; }
     }
 }

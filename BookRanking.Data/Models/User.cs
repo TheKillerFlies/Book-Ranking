@@ -27,11 +27,14 @@ namespace BookRanking.Data.Models
         [MinLength(2), MaxLength(30)]
         public string LastName { get; set; }
 
-        [Required]
+        [Required]  
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         [System.ComponentModel.DefaultValue("")]
         [MinLength(10)]
         public string PasswordHash { get; set; }
+
+        [Required]
+        public bool IsAdmin { get; set; }
 
         public virtual ICollection<Book> FavouriteCollection { get; set; }
     }
