@@ -32,7 +32,8 @@ namespace BookRanking.Client
             var addedAuthorModel = new AuthorDTO
             {
                 FirstName = "Stephen",
-                LastName = "King"
+                LastName = "King",
+                Alias = "It"
             };
 
             service.AddAuthor(addedAuthorModel);

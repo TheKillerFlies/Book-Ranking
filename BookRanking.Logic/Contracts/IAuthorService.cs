@@ -8,5 +8,7 @@ namespace BookRanking.Logic.Contracts
         IQueryable<AuthorDTO> GetAllAuthors();
 
         void AddAuthor(AuthorDTO author);
+
+        AuthorDTO GetAuthorByAlias(string alias);
     }
 }

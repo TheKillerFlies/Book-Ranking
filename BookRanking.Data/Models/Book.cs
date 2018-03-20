@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookRanking.Data.Models
 {
@@ -19,7 +20,14 @@ namespace BookRanking.Data.Models
         public int Id { get; set; }
 
         [Required]
+        //[Index]
         public string Title { get; set; }
+
+        public int PageCount { get; set; }
+
+        [Required]
+        [Index]
+        public int PublishedYear { get; set; }
 
         public virtual ICollection<User> FavouriteUsers
         {

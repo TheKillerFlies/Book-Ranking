@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookRanking.Data.Models
 {
@@ -6,6 +8,7 @@ namespace BookRanking.Data.Models
     {
         private ICollection<Book> books;
         private ICollection<Publisher> publishers;
+
         public Author()
         {
             this.books = new HashSet<Book>();
@@ -18,6 +21,8 @@ namespace BookRanking.Data.Models
 
         public string LastName { get; set; }
 
+        [Required]
+        //[Index(IsUnique = true)]
         public string Alias { get; set; }
 
         public virtual ICollection<Book> Books

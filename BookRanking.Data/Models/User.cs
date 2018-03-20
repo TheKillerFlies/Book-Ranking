@@ -7,6 +7,7 @@ namespace BookRanking.Data.Models
     public class User
     {
         private ICollection<Book> favouriteCollection;
+
         public User()
         {
             this.favouriteCollection = new HashSet<Book>();

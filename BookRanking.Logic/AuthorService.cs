@@ -9,15 +9,11 @@ using System.Linq;
 
 namespace BookRanking.Logic
 {
-    public class AuthorService : IAuthorService
+    public class AuthorService : BaseService, IAuthorService
     {
-        private readonly IBookRankingDbContext dbContext;
-        private readonly IMapper mapper;
-
         public AuthorService(IBookRankingDbContext dbContext, IMapper mapper)
+            : base(dbContext, mapper)
         {
-            this.dbContext = dbContext;
-            this.mapper = mapper;
         }
 
         public IQueryable<AuthorDTO> GetAllAuthors()
@@ -36,6 +32,20 @@ namespace BookRanking.Logic
 
             this.dbContext.Authors.Add(authorToAdd);
             this.dbContext.SaveChanges();
+        }
+
+        public AuthorDTO GetAuthorByAlias(string alias)
+        {
+            var collection = this.dbContext.Authors.ProjectTo<AuthorDTO>();
+            foreach (var authorDto in collection)
+            {
+                if (authorDto.Alias == alias)
+                {
+                    return authorDto;
+                }
+            }
+
+            return null;
         }
     }
 }

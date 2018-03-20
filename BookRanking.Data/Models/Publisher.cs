@@ -7,6 +7,7 @@ namespace BookRanking.Data.Models
     {
         private ICollection<Book> books;
         private ICollection<Author> authors;
+
         public Publisher()
         {
             this.books = new HashSet<Book>();
