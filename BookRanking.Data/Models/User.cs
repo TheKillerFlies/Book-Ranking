@@ -6,9 +6,10 @@ namespace BookRanking.Data.Models
 {
     public class User
     {
+        private ICollection<Book> favouriteCollection;
         public User()
         {
-            this.FavouriteCollection = new HashSet<Book>();
+            this.favouriteCollection = new HashSet<Book>();
         }
 
         public int Id { get; set; }
@@ -36,6 +37,10 @@ namespace BookRanking.Data.Models
         [Required]
         public bool IsAdmin { get; set; }
 
-        public virtual ICollection<Book> FavouriteCollection { get; set; }
+        public virtual ICollection<Book> FavouriteCollection
+        {
+            get { return this.favouriteCollection; }
+            set { this.favouriteCollection = value; }
+        }
     }
 }
