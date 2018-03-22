@@ -42,9 +42,19 @@ namespace BookRanking.Logic
             {
                 foreach (var author in book.AuthorDTOs)
                 {
-                     this.authorService.AddAuthor(author);       
+                    if (!this.dbContext.Authors
+                       .Any(x => x.FirstName == author.FirstName
+                       && x.LastName == author.LastName
+                       && x.Alias == author.Alias))
+                    {
+                        this.authorService.AddAuthor(author);
+                    }
                 }
-                this.publisherService.AddPublisher(book.Publisher);
+
+                //if (!this.dbContext.Publishers.ToList().Any(x => x.Name == book.Publisher.Name))
+                //{
+                //    this.publisherService.AddPublisher(book.Publisher);
+                //}
 
                 var bookToAdd = this.mapper.Map<Book>(book);
                 this.dbContext.Books.Add(bookToAdd);

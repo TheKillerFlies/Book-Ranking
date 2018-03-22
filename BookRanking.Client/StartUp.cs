@@ -27,24 +27,21 @@ namespace BookRanking.Client
 
             var author = new AuthorDTO
             {
-                FirstName = "Pesho",
+                FirstName = "sfsg",
                 LastName = "S",
                 Alias = "It"
             };
 
             var publisher = new PublisherDTO
             {
-                Name = "Podf"
+                Name = "khh"
             };
 
             var bookToAdd = new BookDTO
             {
-                Title = "Igoto",
+                Title = "123",
                 PublishedYear = 1970,
-                AuthorDTOs =
-                {
-                    author
-                },
+                AuthorDTOs = { author },
                 Publisher = publisher
             };
 
