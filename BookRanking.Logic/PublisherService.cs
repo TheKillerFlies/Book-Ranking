@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BookRanking.Logic
 {
-    class PublisherService : BaseService
+    public class PublisherService : BaseService, IPublisherService
     {
 
         public PublisherService(IBookRankingDbContext dbContext, IMapper mapper)
@@ -40,6 +40,7 @@ namespace BookRanking.Logic
             {
                 var publisherToAdd = this.mapper.Map<Publisher>(publisher);
                 this.dbContext.Publishers.Add(publisherToAdd);
+                this.dbContext.SaveChanges();
             }
             else
             {

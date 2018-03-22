@@ -7,6 +7,7 @@ using System.Reflection;
 using BookRanking.Common;
 using BookRanking.Logic.Contracts;
 using BookRanking.DTO;
+using BookRanking.Logic;
 
 namespace BookRanking.Client
 {
@@ -21,24 +22,34 @@ namespace BookRanking.Client
             var container = builder.Build();
 
             var bookService = container.Resolve<IBookService>();
+            var authorService = container.Resolve<IAuthorService>();
+            var publisherService = container.Resolve<IPublisherService>();
+
             var author = new AuthorDTO
             {
                 FirstName = "Pesho",
                 LastName = "S",
                 Alias = "It"
             };
+
+            var publisher = new PublisherDTO
+            {
+                Name = "Podf"
+            };
+
             var bookToAdd = new BookDTO
             {
-                Title = "Itrr",
+                Title = "Igoto",
                 PublishedYear = 1970,
                 AuthorDTOs =
                 {
                     author
-                }
-
+                },
+                Publisher = publisher
             };
 
             bookService.AddBook(bookToAdd);
+
             //var service = container.Resolve<IAuthorService>();
 
             //var authors = service.GetAllAuthors();

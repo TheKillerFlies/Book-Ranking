@@ -12,11 +12,13 @@ namespace BookRanking.Logic
     public class BookService : BaseService, IBookService
     {
         private IAuthorService authorService;
+        private IPublisherService publisherService;
 
-        public BookService(IAuthorService authorService, IBookRankingDbContext dbContext, IMapper mapper)
+        public BookService(IAuthorService authorService, IPublisherService publisherService, IBookRankingDbContext dbContext, IMapper mapper)
             : base(dbContext, mapper)
         {
             this.authorService = authorService;
+            this.publisherService = publisherService;
         }
 
         public IQueryable<BookDTO> GetAllBooks()
@@ -40,18 +42,11 @@ namespace BookRanking.Logic
             {
                 foreach (var author in book.AuthorDTOs)
                 {
-                    if (!this.dbContext.Authors
-                        .Any(x => x.FirstName == author.FirstName
-                        && x.LastName == author.LastName
-                        && x.Alias == author.Alias))
-                    {
-                        this.authorService.AddAuthor(author);
-                    }
-
-                    //if(this.dbContext.Publishers.Any(x=>x.Name == book.Publisher))
+                     this.authorService.AddAuthor(author);       
                 }
-                var bookToAdd = this.mapper.Map<Book>(book);
+                this.publisherService.AddPublisher(book.Publisher);
 
+                var bookToAdd = this.mapper.Map<Book>(book);
                 this.dbContext.Books.Add(bookToAdd);
                 this.dbContext.SaveChanges();
             }
@@ -80,47 +75,5 @@ namespace BookRanking.Logic
             this.dbContext.Books.Remove(booktoremove);
             this.dbContext.SaveChanges();
         }
-
-        //public void AddOrUpdateBook(BookDTO bookDTO)
-        //{
-        //    if (bookDTO ==null)
-        //    {
-        //        throw new ArgumentException("Book DTO cannot be null.");
-        //    }
-
-        //    if (string.IsNullOrEmpty(bookDTO.Title))
-        //    {
-        //        throw new ArgumentException("Book DTO's title cannot be null.");
-        //    }
-
-        //    // TODO: Add author collection check.
-
-        //    foreach (var authorDTO in bookDTO.AuthorDTOs)
-        //    {
-        //        var author = this.authorService.GetAuthorByAlias(authorDTO.Alias);
-        //        if (author == null)
-        //        {
-        //            this.authorService.AddAuthor(authorDTO);
-        //        }
-        //    }
-
-        //    if (!this.dbContext.Books.Any(b => b.Title == bookDTO.Title && b.PublishedYear == bookDTO.PublishedYear))
-        //    {
-        //        var bookToAdd = this.mapper.Map<Book>(bookDTO);
-        //        this.dbContext.Books.Add(bookToAdd);
-        //    }
-        //    else
-        //    {
-        //        var bookToUpdate = this.dbContext.Books.First(b =>
-        //            b.Title == bookDTO.Title && b.PublishedYear == bookDTO.PublishedYear);
-
-        //        bookToUpdate.Title = bookDTO.Title;
-        //        bookToUpdate.PublishedYear = bookDTO.PublishedYear;
-        //        bookToUpdate.Authors = this.authorService.GetAllAuthors()
-        //            .Where(a => bookDTO.AuthorDTOs.Any(r => r.Alias == a.Alias)).ProjectTo<Author>().ToList();
-        //    }
-
-        //    this.dbContext.SaveChanges();
-        //}
     }
 }

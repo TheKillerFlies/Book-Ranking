@@ -68,6 +68,7 @@
     <Compile Include="BookService.cs" />
     <Compile Include="Contracts\IAuthorService.cs" />
     <Compile Include="Contracts\IBookService.cs" />
+    <Compile Include="Contracts\IPublisherService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublisherService.cs" />
   </ItemGroup>

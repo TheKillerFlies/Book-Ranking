@@ -16,6 +16,6 @@ namespace BookRanking.DTO
 
         public ICollection<AuthorDTO> AuthorDTOs { get; set; }
 
-        public Publisher Publisher { get; set; }
+        public PublisherDTO Publisher { get; set; }
     }
 }
