@@ -20,7 +20,26 @@ namespace BookRanking.Client
             builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
             var container = builder.Build();
 
-            var service = container.Resolve<IAuthorService>();
+            var bookService = container.Resolve<IBookService>();
+            var author = new AuthorDTO
+            {
+                FirstName = "Pesho",
+                LastName = "S",
+                Alias = "It"
+            };
+            var bookToAdd = new BookDTO
+            {
+                Title = "Itrr",
+                PublishedYear = 1970,
+                AuthorDTOs =
+                {
+                    author
+                }
+
+            };
+
+            //bookService.AddBook(bookToAdd);
+            //var service = container.Resolve<IAuthorService>();
 
             //var authors = service.GetAllAuthors();
 
@@ -29,14 +48,15 @@ namespace BookRanking.Client
             //    Console.WriteLine(author.LastName);
             //}
 
-            var addedAuthorModel = new AuthorDTO
-            {
-                FirstName = "Stephen",
-                LastName = "King",
-                Alias = "It"
-            };
+            //var addedAuthorModel = new AuthorDTO
+            //{
+            //    FirstName = "P",
+            //    LastName = "S",
+            //    Alias = "It"
+            //};
 
-            service.AddAuthor(addedAuthorModel);
+
+            //service.AddAuthor(addedAuthorModel);
         }
 
         private static void Init()

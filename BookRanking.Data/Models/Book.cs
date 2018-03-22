@@ -7,14 +7,12 @@ namespace BookRanking.Data.Models
     public class Book
     {
         private ICollection<User> favouriteUsers;
-        private ICollection<Author> authors;
-        private ICollection<Publisher> publishers;
+        private ICollection<Author> authors;       
 
         public Book()
         {
             this.favouriteUsers = new HashSet<User>();
             this.authors = new HashSet<Author>();
-            this.publishers = new HashSet<Publisher>();
         }
 
         public int Id { get; set; }
@@ -41,10 +39,7 @@ namespace BookRanking.Data.Models
             set { this.authors = value; }
         }
 
-        public virtual ICollection<Publisher> Publishers
-        {
-            get { return this.publishers; }
-            set { this.publishers = value; }
-        }
+        public int PublisherId { get; set; }
+        public Publisher Publisher{ get; set; }
     }
 }

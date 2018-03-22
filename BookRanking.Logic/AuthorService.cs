@@ -27,11 +27,20 @@ namespace BookRanking.Logic
             {
                 throw new ArgumentException();
             }
-
-            var authorToAdd = this.mapper.Map<Author>(author);
-
-            this.dbContext.Authors.Add(authorToAdd);
-            this.dbContext.SaveChanges();
+            if (!this.dbContext.Authors
+                        .Any(x => x.FirstName == author.FirstName
+                        && x.LastName == author.LastName
+                        && x.Alias == author.Alias))
+            {
+                var authorToAdd = this.mapper.Map<Author>(author);
+                this.dbContext.Authors.Add(authorToAdd);
+                this.dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("This author already exists.");
+            }
+            
         }
 
         public AuthorDTO GetAuthorByAlias(string alias)

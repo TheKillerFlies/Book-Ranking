@@ -21,8 +21,6 @@ namespace BookRanking.Data.Models
 
         public string LastName { get; set; }
 
-        [Required]
-        //[Index(IsUnique = true)]
         public string Alias { get; set; }
 
         public virtual ICollection<Book> Books

@@ -7,8 +7,14 @@ namespace BookRanking.Logic.Contracts
     {
         IQueryable<BookDTO> GetAllBooks();
 
-        void AddOrUpdateBook(BookDTO bookDTO);
+       // void AddOrUpdateBook(BookDTO bookDTO);
 
         void RemoveBook(BookDTO bookDTO);
+
+        void AddBook(BookDTO bookDTO);
+
+        void UpdateBook(BookDTO bookDTO);
+
+
     }
 }
