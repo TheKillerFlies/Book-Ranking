@@ -38,7 +38,7 @@ namespace BookRanking.Client
 
             };
 
-            //bookService.AddBook(bookToAdd);
+            bookService.AddBook(bookToAdd);
             //var service = container.Resolve<IAuthorService>();
 
             //var authors = service.GetAllAuthors();
