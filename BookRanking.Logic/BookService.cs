@@ -51,10 +51,10 @@ namespace BookRanking.Logic
                     }
                 }
 
-                //if (!this.dbContext.Publishers.ToList().Any(x => x.Name == book.Publisher.Name))
-                //{
-                //    this.publisherService.AddPublisher(book.Publisher);
-                //}
+                if (!this.dbContext.Publishers.ToList().Any(x => x.Name == book.Publisher.Name))
+                {
+                    this.publisherService.AddPublisher(book.Publisher);
+                }
 
                 var bookToAdd = this.mapper.Map<Book>(book);
                 this.dbContext.Books.Add(bookToAdd);

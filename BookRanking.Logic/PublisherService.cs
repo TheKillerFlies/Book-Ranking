@@ -40,7 +40,7 @@ namespace BookRanking.Logic
             {
                 var publisherToAdd = this.mapper.Map<Publisher>(publisher);
                 this.dbContext.Publishers.Add(publisherToAdd);
-                this.dbContext.SaveChanges();
+                //this.dbContext.SaveChanges();
             }
             else
             {

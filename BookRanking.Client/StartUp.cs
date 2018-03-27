@@ -31,35 +31,35 @@ namespace BookRanking.Client
 
             var container = builder.Build();
 
-            //var bookService = container.Resolve<IBookService>();
-            //var authorService = container.Resolve<IAuthorService>();
-            //var publisherService = container.Resolve<IPublisherService>();
+            var bookService = container.Resolve<IBookService>();
+            var authorService = container.Resolve<IAuthorService>();
+            var publisherService = container.Resolve<IPublisherService>();
 
-            var engine = container.Resolve<IBookEngine>();
+           // var engine = container.Resolve<IBookEngine>();
 
-            engine.Start();
+            //engine.Start();
 
-            //var author = new AuthorDTO
-            //{
-            //    FirstName = "sfsg",
-            //    LastName = "S",
-            //    Alias = "It"
-            //};
+            var author = new AuthorDTO
+            {
+                FirstName = "sfsg",
+                LastName = "S",
+                Alias = "It"
+            };
 
-            //var publisher = new PublisherDTO
-            //{
-            //    Name = "khh"
-            //};
+            var publisher = new PublisherDTO
+            {
+                Name = "khhхh"
+            };
 
-            //var bookToAdd = new BookDTO
-            //{
-            //    Title = "huhuhu",
-            //    PublishedYear = 1970,
-            //    AuthorDTOs = { author },
-            //    Publisher = publisher
-            //};
+            var bookToAdd = new BookDTO
+            {
+                Title = "huhuhхu1",
+                PublishedYear = 1970,
+                AuthorDTOs = { author },
+                Publisher = publisher
+            };
 
-            //bookService.AddBook(bookToAdd);
+            bookService.AddBook(bookToAdd);
 
             //var service = container.Resolve<IAuthorService>();
 
