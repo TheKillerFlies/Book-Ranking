@@ -60,6 +60,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutofacModules\AutofacModule.cs" />
+    <Compile Include="ConsoleLoggerBook\ConsoleLogger.cs" />
+    <Compile Include="ConsoleLoggerBook\ConsoleReader.cs" />
+    <Compile Include="ConsoleLoggerBook\ConsoleWriter.cs" />
+    <Compile Include="ConsoleLoggerBook\Contracts\IConsoleLogger.cs" />
+    <Compile Include="ConsoleLoggerBook\Contracts\IConsoleReader.cs" />
+    <Compile Include="ConsoleLoggerBook\Contracts\IConsoleWriter.cs" />
+    <Compile Include="Engine\BookEngine.cs" />
+    <Compile Include="Engine\Contracts\IBookEngine.cs" />
+    <Compile Include="Models\Contracts\IScreenPrinter.cs" />
+    <Compile Include="Models\Messages\GlobalMessages.cs" />
+    <Compile Include="Models\ScreenPrinter.cs" />
     <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

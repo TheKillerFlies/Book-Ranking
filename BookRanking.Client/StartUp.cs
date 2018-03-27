@@ -8,6 +8,13 @@ using BookRanking.Common;
 using BookRanking.Logic.Contracts;
 using BookRanking.DTO;
 using BookRanking.Logic;
+using BookRanking.Client.Engine.Contracts;
+using BookRanking.Client.Engine;
+using BookRanking.Client.Models;
+using BookRanking.Client.Models.Contracts;
+using BookRanking.Client.ConsoleLoggerBook;
+using BookRanking.Client.ConsoleLoggerBook.Contracts;
+using BookRanking.Client.AutofacModules;
 
 namespace BookRanking.Client
 {
@@ -18,34 +25,41 @@ namespace BookRanking.Client
             Init();
 
             var builder = new ContainerBuilder();
-            builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
+            //builder.RegisterAssemblyModules(Assembly.GetExecutingAssembly());
+            var injectionConfig = new AutofacModule();
+            builder.RegisterModule<AutofacModule>();
+
             var container = builder.Build();
 
-            var bookService = container.Resolve<IBookService>();
-            var authorService = container.Resolve<IAuthorService>();
-            var publisherService = container.Resolve<IPublisherService>();
+            //var bookService = container.Resolve<IBookService>();
+            //var authorService = container.Resolve<IAuthorService>();
+            //var publisherService = container.Resolve<IPublisherService>();
 
-            var author = new AuthorDTO
-            {
-                FirstName = "sfsg",
-                LastName = "S",
-                Alias = "It"
-            };
+            var engine = container.Resolve<IBookEngine>();
 
-            var publisher = new PublisherDTO
-            {
-                Name = "khh"
-            };
+            engine.Start();
 
-            var bookToAdd = new BookDTO
-            {
-                Title = "123",
-                PublishedYear = 1970,
-                AuthorDTOs = { author },
-                Publisher = publisher
-            };
+            //var author = new AuthorDTO
+            //{
+            //    FirstName = "sfsg",
+            //    LastName = "S",
+            //    Alias = "It"
+            //};
 
-            bookService.AddBook(bookToAdd);
+            //var publisher = new PublisherDTO
+            //{
+            //    Name = "khh"
+            //};
+
+            //var bookToAdd = new BookDTO
+            //{
+            //    Title = "huhuhu",
+            //    PublishedYear = 1970,
+            //    AuthorDTOs = { author },
+            //    Publisher = publisher
+            //};
+
+            //bookService.AddBook(bookToAdd);
 
             //var service = container.Resolve<IAuthorService>();
 
