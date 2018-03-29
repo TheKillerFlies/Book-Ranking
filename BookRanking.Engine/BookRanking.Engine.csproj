@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{964229EE-4365-453F-82AD-CC0F77ACEA5A}</ProjectGuid>
+    <ProjectGuid>{F0E4BC67-FCA4-4370-B77E-EA26FACFA14F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BookRanking.Client</RootNamespace>
-    <AssemblyName>BookRanking.Client</AssemblyName>
+    <RootNamespace>BookRanking.Engine</RootNamespace>
+    <AssemblyName>BookRanking.Engine</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -38,14 +38,7 @@
     <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -59,40 +52,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutofacModules\AutofacModule.cs" />
-    <Compile Include="StartUp.cs" />
+    <Compile Include="Commands\AddAuthorCommand.cs" />
+    <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Engine\BookEngine.cs" />
+    <Compile Include="Engine\ConsoleRenderer.cs" />
+    <Compile Include="Engine\Contracts\IBookEngine.cs" />
+    <Compile Include="Engine\Contracts\IRenderer.cs" />
+    <Compile Include="Factories\CommandFactory.cs" />
+    <Compile Include="Factories\Contracts\IDTOFactory.cs" />
+    <Compile Include="Factories\DTOFactory.cs" />
+    <Compile Include="Factories\Contracts\ICommandFactory.cs" />
+    <Compile Include="Models\Messages\GlobalMessages.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Books.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookRanking.Common\BookRanking.Common.csproj">
-      <Project>{43939565-06A1-427D-B892-C391B406F878}</Project>
+      <Project>{43939565-06a1-427d-b892-c391b406f878}</Project>
       <Name>BookRanking.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BookRanking.Context\BookRanking.Context.csproj">
-      <Project>{fe284570-b1e1-4792-996f-08874cdbdd97}</Project>
-      <Name>BookRanking.Context</Name>
     </ProjectReference>
     <ProjectReference Include="..\BookRanking.Data\BookRanking.Data.csproj">
       <Project>{b5b4adf2-6cb7-484e-8ee7-e349b7d3021d}</Project>
       <Name>BookRanking.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\BookRanking.DTO\BookRanking.DTO.csproj">
-      <Project>{479F6730-D7A6-44E9-AB94-6E1B1A087BE8}</Project>
+      <Project>{479f6730-d7a6-44e9-ab94-6e1b1a087be8}</Project>
       <Name>BookRanking.DTO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BookRanking.Engine\BookRanking.Engine.csproj">
-      <Project>{f0e4bc67-fca4-4370-b77e-ea26facfa14f}</Project>
-      <Name>BookRanking.Engine</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BookRanking.Logic\BookRanking.Logic.csproj">
-      <Project>{281B40D8-8054-4EF1-A538-2E2C0CD03E04}</Project>
+      <Project>{281b40d8-8054-4ef1-a538-2e2c0cd03e04}</Project>
       <Name>BookRanking.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Contracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

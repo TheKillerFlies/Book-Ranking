@@ -1,0 +1,31 @@
+﻿{
+  "books": [
+    {
+      "Title": "The little prince",
+      "Pages": 100,
+      "Author": [
+        "Antoine Exupery"
+      ],
+      "Year": 1943,
+      "Publisher": "Some publisher"
+    },
+    {
+      "Title": "The little pony",
+      "Pages": 100,
+      "Author": [
+        "Cool author"
+      ],
+      "Year": "2000",
+      "Publisher": "Some publisher"
+    },
+    {
+      "Title": "The little unicorn",
+      "Pages": 100,
+      "Author": [
+        "Best Author"
+      ],
+      "Year": 1943,
+      "Publisher": "Some publisher"
+    }
+  ]
+  }

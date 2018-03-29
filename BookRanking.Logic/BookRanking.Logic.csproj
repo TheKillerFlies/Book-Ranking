@@ -73,6 +73,10 @@
     <Compile Include="PublisherService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BookRanking.Common\BookRanking.Common.csproj">
+      <Project>{43939565-06a1-427d-b892-c391b406f878}</Project>
+      <Name>BookRanking.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BookRanking.Context\BookRanking.Context.csproj">
       <Project>{FE284570-B1E1-4792-996F-08874CDBDD97}</Project>
       <Name>BookRanking.Context</Name>

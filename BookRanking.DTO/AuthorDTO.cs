@@ -1,14 +1,22 @@
-﻿using BookRanking.Common.MapperContracts;
+﻿using AutoMapper;
+using BookRanking.Common.MapperContracts;
 using BookRanking.Data.Models;
 
 namespace BookRanking.DTO
 {
     public class AuthorDTO : IMapTo<Author>
     {
-        public string FirstName { get; set; }
+        public AuthorDTO(string firstName, string lastName, string alias)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Alias = alias;
+        }
+        public string FirstName { get; private set; }
 
-        public string LastName { get; set; }
+        public string LastName { get; private set; }
 
-        public string Alias { get; set; }
+        public string Alias { get; private set; }
+
     }
 }
