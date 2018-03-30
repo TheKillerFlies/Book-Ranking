@@ -6,6 +6,7 @@ using BookRanking.DTO;
 using BookRanking.Logic.Contracts;
 using System;
 using System.Linq;
+using AutoMapper;
 
 namespace BookRanking.Logic
 {
@@ -51,12 +52,13 @@ namespace BookRanking.Logic
                     }
                 }
 
-                //if (!this.dbContext.Publishers.ToList().Any(x => x.Name == book.Publisher.Name))
-                //{
-                //    this.publisherService.AddPublisher(book.Publisher);
-                //}
+                if (!this.dbContext.Publishers.ToList().Any(x => x.Name == book.Publisher.Name))
+                {
+                    this.publisherService.AddPublisher(book.Publisher);
+                }
 
                 var bookToAdd = this.mapper.Map<Book>(book);
+                bookToAdd.Publisher = this.dbContext.Publishers.First(p => p.Name == book.Publisher.Name);
                 this.dbContext.Books.Add(bookToAdd);
                 this.dbContext.SaveChanges();
             }
@@ -66,17 +68,24 @@ namespace BookRanking.Logic
             }
         }
 
-        public void UpdateBook(BookDTO book)
+        public BookDTO FindBookByTitle(string title)
         {
-            var bookToUpdate = this.dbContext.Books.First(b =>
-                    b.Title == book.Title && b.PublishedYear == book.PublishedYear);
-
-            bookToUpdate.Title = book.Title;
-            bookToUpdate.PublishedYear = book.PublishedYear;
-            bookToUpdate.Authors = this.authorService.GetAllAuthors()
-                .Where(a => book.AuthorDTOs.Any(r => r.Alias == a.Alias)).ProjectTo<Author>().ToList();
-            this.dbContext.SaveChanges();
+            var book = this.dbContext.Books.First(x => x.Title == title);
+            return Mapper.Instance.Map<BookDTO>(book);    
         }
+
+
+        //public void UpdateBook(BookDTO book)
+        //{
+        //    var bookToUpdate = this.dbContext.Books.First(b =>
+        //            b.Id == book.Id);
+
+        //    bookToUpdate.Title = book.Title;
+        //    bookToUpdate.PublishedYear = book.PublishedYear;
+        //    bookToUpdate.Authors = this.authorService.GetAllAuthors()
+        //        .Where(a => book.AuthorDTOs.Any(r => r.Alias == a.Alias)).ProjectTo<Author>().ToList();
+        //    this.dbContext.SaveChanges();
+        //}
 
         public void RemoveBook(BookDTO bookdto)
         {

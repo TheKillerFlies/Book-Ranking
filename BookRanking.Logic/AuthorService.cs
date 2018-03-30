@@ -43,6 +43,26 @@ namespace BookRanking.Logic
             
         }
 
+        public void RemoveAuthor(AuthorDTO author)
+        {
+            if(this.dbContext.Authors
+                        .Any(x => x.FirstName == author.FirstName
+                        && x.LastName == author.LastName
+                        && x.Alias == author.Alias))
+            {
+                var authorToRemove = this.dbContext.Authors
+                        .First(x => x.FirstName == author.FirstName
+                        && x.LastName == author.LastName
+                        && x.Alias == author.Alias);
+
+                this.dbContext.Authors.Remove(authorToRemove);
+                this.dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("The author you are trying to remove does not exist.");
+            }
+        }
         public AuthorDTO GetAuthorByAlias(string alias)
         {
             var collection = this.dbContext.Authors.ProjectTo<AuthorDTO>();

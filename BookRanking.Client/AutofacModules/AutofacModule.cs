@@ -20,13 +20,15 @@ namespace BookRanking.Client.AutofacModules
         {
             builder.RegisterType<BookRankingDbContext>().As<IBookRankingDbContext>().InstancePerDependency();
             builder.RegisterType<ConsoleRenderer>().As<IRenderer>().SingleInstance();
+            builder.RegisterType<BaseService>().As<IBaseService>();
             builder.RegisterType<AuthorService>().As<IAuthorService>().InstancePerDependency();
             builder.RegisterType<BookService>().As<IBookService>().InstancePerDependency();
             builder.RegisterType<PublisherService>().As<IPublisherService>().InstancePerDependency();
             builder.RegisterType<BookEngine>().As<IBookEngine>().SingleInstance();
             builder.RegisterType<CommandFactory>().As<ICommandFactory>().SingleInstance();
-            builder.RegisterType<AddAuthorCommand>().Named<ICommand>("addаuthor");
             builder.Register(x => Mapper.Instance);
+            builder.RegisterType<AddAuthorCommand>().Named<ICommand>("addаuthor");
+
         }
     }
 }

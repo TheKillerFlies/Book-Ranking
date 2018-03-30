@@ -14,6 +14,7 @@ namespace BookRanking.DTO
             this.AuthorDTOs = new HashSet<AuthorDTO>();
             this.Publisher = publisher;
         }
+
         public string Title { get; private set; }
 
         public int PublishedYear { get; private set; }

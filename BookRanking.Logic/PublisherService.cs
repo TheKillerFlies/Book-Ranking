@@ -40,11 +40,25 @@ namespace BookRanking.Logic
             {
                 var publisherToAdd = this.mapper.Map<Publisher>(publisher);
                 this.dbContext.Publishers.Add(publisherToAdd);
-                //this.dbContext.SaveChanges();
+                this.dbContext.SaveChanges();
             }
             else
             {
                 throw new ArgumentException("This publisher already exists.");
+            }
+        }
+
+        public void RemovePublisher(PublisherDTO publisher)
+        {
+            if(this.dbContext.Publishers.Any(x=>x.Name == publisher.Name))
+            {
+                var publisherToRemove = this.dbContext.Publishers.First(x => x.Name == publisher.Name);
+                this.dbContext.Publishers.Remove(publisherToRemove);
+                this.dbContext.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentException("The publisher that you are trying to remove does not exist.");
             }
         }
     }
