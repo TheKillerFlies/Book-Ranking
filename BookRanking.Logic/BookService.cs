@@ -71,6 +71,7 @@ namespace BookRanking.Logic
         public BookDTO FindBookByTitle(string title)
         {
             var book = this.dbContext.Books.First(x => x.Title == title);
+            book.Publisher = this.dbContext.Publishers.First(p => p.Id == book.PublisherId);
             return Mapper.Instance.Map<BookDTO>(book);    
         }
 
