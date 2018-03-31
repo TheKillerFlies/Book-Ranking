@@ -1,11 +1,12 @@
 ﻿using BookRanking.DTO;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BookRanking.Logic.Contracts
 {
     public interface IBookService
     {
-        IQueryable<BookDTO> GetAllBooks();
+        IEnumerable<BookDTO> GetAllBooks();
 
         void RemoveBook(BookDTO bookDTO);
 

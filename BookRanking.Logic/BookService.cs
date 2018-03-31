@@ -7,6 +7,7 @@ using BookRanking.Logic.Contracts;
 using System;
 using System.Linq;
 using AutoMapper;
+using System.Collections.Generic;
 
 namespace BookRanking.Logic
 {
@@ -22,9 +23,16 @@ namespace BookRanking.Logic
             this.publisherService = publisherService;
         }
 
-        public IQueryable<BookDTO> GetAllBooks()
+        public IEnumerable<BookDTO> GetAllBooks()
         {
-            return this.dbContext.Books.ProjectTo<BookDTO>();
+            var books = this.dbContext.Books;
+            var bookDTOs = new List<BookDTO>();
+
+            foreach (var book in books)
+            {
+                bookDTOs.Add(this.mapper.Map<BookDTO>(book));
+            }
+            return bookDTOs;
         }
 
         public void AddBook(BookDTO book)

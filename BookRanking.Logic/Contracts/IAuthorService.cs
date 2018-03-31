@@ -1,11 +1,12 @@
 ﻿using BookRanking.DTO;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BookRanking.Logic.Contracts
 {
     public interface IAuthorService
     {
-        IQueryable<AuthorDTO> GetAllAuthors();
+        IEnumerable<AuthorDTO> GetAllAuthors();
 
         void AddAuthor(AuthorDTO author);
 

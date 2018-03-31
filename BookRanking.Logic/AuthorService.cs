@@ -5,6 +5,7 @@ using BookRanking.Data.Models;
 using BookRanking.DTO;
 using BookRanking.Logic.Contracts;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BookRanking.Logic
@@ -16,9 +17,16 @@ namespace BookRanking.Logic
         {
         }
 
-        public IQueryable<AuthorDTO> GetAllAuthors()
+        public IEnumerable<AuthorDTO> GetAllAuthors()
         {
-            return this.dbContext.Authors.ProjectTo<AuthorDTO>();
+           var authors = this.dbContext.Authors;
+           var authorDTOs = new List<AuthorDTO>();
+
+            foreach (var author in authors)
+            {
+               authorDTOs.Add(this.mapper.Map<AuthorDTO>(author));
+            }
+            return authorDTOs;
         }
 
         public void AddAuthor(AuthorDTO author)

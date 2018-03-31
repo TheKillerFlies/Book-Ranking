@@ -19,9 +19,16 @@ namespace BookRanking.Logic
         {
         }
 
-        public IQueryable<PublisherDTO> GetAllPublishers()
+        public IEnumerable<PublisherDTO> GetAllPublishers()
         {
-            return this.dbContext.Publishers.ProjectTo<PublisherDTO>();
+            var publishers = this.dbContext.Publishers;
+            var publisherDTOs = new List<PublisherDTO>();
+
+            foreach (var publisher in publishers)
+            {
+                publisherDTOs.Add(this.mapper.Map<PublisherDTO>(publisher));
+            }
+            return publisherDTOs;
         }
 
         public void AddPublisher(PublisherDTO publisher)

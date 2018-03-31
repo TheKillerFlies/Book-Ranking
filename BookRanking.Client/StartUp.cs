@@ -41,11 +41,11 @@ namespace BookRanking.Client
 
             //var b = bookService.FindBookByTitle("kniga1");
             //Console.WriteLine(b.Publisher.Name);
-            var author = authorService.GetAuthorByAlias("It");
-            Console.WriteLine(author.FirstName);
-
-        
-       
+            var books = bookService.GetAllBooks();
+            foreach (var item in books)
+            {
+                Console.WriteLine(item.Title);
+            }  
         }
 
         private static void Init()
