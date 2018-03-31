@@ -39,8 +39,10 @@ namespace BookRanking.Client
 
             var bookService = new BookService(authorService, publisherService, context, Mapper.Instance);
 
-            var b = bookService.FindBookByTitle("kniga1");
-            Console.WriteLine(b.Publisher.Name);
+            //var b = bookService.FindBookByTitle("kniga1");
+            //Console.WriteLine(b.Publisher.Name);
+            var author = authorService.GetAuthorByAlias("It");
+            Console.WriteLine(author.FirstName);
 
         
        
