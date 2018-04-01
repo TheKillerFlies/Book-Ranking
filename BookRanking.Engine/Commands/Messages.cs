@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookRanking.Engine.Commands.Contracts
+namespace BookRanking.Engine.Commands
 {
-    public interface ICommand
+    public static class Messages
     {
-        string Execute(IList<string> parameters);
+     
     }
 }

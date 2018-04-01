@@ -10,22 +10,20 @@ using System.Threading.Tasks;
 
 namespace BookRanking.Engine.Commands.PublisherCommands
 {
-    public class GetAllPublishersCommand : Command, ICommand
+    public class PrintAllPublishersCommand : Command, ICommand
     {
-        private readonly IDTOFactory DTOFactory;
         private readonly IPublisherService publisherService;
 
-        public GetAllPublishersCommand(IDTOFactory DTOFactory, IPublisherService publisherService)
+        public PrintAllPublishersCommand(IDTOFactory DTOFactory, IPublisherService publisherService)
             :base(DTOFactory)
         {
-            this.DTOFactory = DTOFactory;
             this.publisherService = publisherService;
         }
-        public override object Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
             var publishers = this.publisherService.GetAllPublishers();
 
-            return publishers;
+            return "";
         }
     }
 }

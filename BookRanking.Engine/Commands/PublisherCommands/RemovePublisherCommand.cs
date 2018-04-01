@@ -9,20 +9,21 @@ using System.Threading.Tasks;
 
 namespace BookRanking.Engine.Commands.PublisherCommands
 {
-    public class AddPublisherCommand : Command, ICommand
+    public class RemovePublisherCommand : Command, ICommand
     {
         private readonly IPublisherService publisherService;
 
-        public AddPublisherCommand(IDTOFactory DTOFactory, IPublisherService publisherService)
+        public RemovePublisherCommand(IDTOFactory DTOFactory, IPublisherService publisherService)
             : base(DTOFactory)
         {
             this.publisherService = publisherService;
         }
+
         public override string Execute(IList<string> parameters)
         {
             var name = parameters[0];
             var publisher = this.DTOFactory.CreatePublisherDTO(name);
-            this.publisherService.AddPublisher(publisher);
+            this.publisherService.RemovePublisher(publisher);
             return "";
         }
     }

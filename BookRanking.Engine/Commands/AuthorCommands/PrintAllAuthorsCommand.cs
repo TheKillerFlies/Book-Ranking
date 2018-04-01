@@ -7,22 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookRanking.Engine.Commands
+namespace BookRanking.Engine.Commands.AuthorCommands
 {
-    public class GetAuthorByAliasCommand : ICommand
+    public class PrintAllAuthorsCommand : Command, ICommand
     {
-        private readonly IDTOFactory DTOFactory;
         private readonly IAuthorService authorService;
 
-        public GetAuthorByAliasCommand(IDTOFactory DTOFactory, IAuthorService authorService)
+        public PrintAllAuthorsCommand(IDTOFactory DTOFactory, IAuthorService authorService)
+            : base(DTOFactory)
+
         {
-            this.DTOFactory = DTOFactory;
             this.authorService = authorService;
         }
-
-        public object Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
-            throw new NotImplementedException();
+           var authors = this.authorService.GetAllAuthors();
+
+            return "";
         }
+        
     }
 }
