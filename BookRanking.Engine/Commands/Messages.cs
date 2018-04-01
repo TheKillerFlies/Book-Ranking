@@ -11,7 +11,10 @@ namespace BookRanking.Engine.Commands
         public const string authorAdded = "Author successfully added!";
         public const string authorRemoved = "Author successfully removed!";
         public const string publisherAdded = "Publisher successfully added!";
-        public const string publisherRemoved = "publisher successfully removed!";
+        public const string publisherRemoved = "Publisher successfully removed!";
+        public const string bookAdded = "Book successfully added!";
+        public const string bookRemoved = "Book successfully removed!";
+
 
 
     }

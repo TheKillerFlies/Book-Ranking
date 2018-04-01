@@ -6,6 +6,7 @@ using BookRanking.Client.Models;
 using BookRanking.Context;
 using BookRanking.Engine.Commands;
 using BookRanking.Engine.Commands.AuthorCommands;
+using BookRanking.Engine.Commands.BookCommands;
 using BookRanking.Engine.Commands.Contracts;
 using BookRanking.Engine.Commands.PublisherCommands;
 using BookRanking.Engine.Engine;
@@ -37,6 +38,12 @@ namespace BookRanking.Client.AutofacModules
             builder.RegisterType<AddPublisherCommand>().Named<ICommand>("addpublisher").InstancePerDependency();
             builder.RegisterType<PrintAllPublishersCommand>().Named<ICommand>("getallpublishers").InstancePerDependency();
             builder.RegisterType<RemovePublisherCommand>().Named<ICommand>("removepublisher").InstancePerDependency();
+            builder.RegisterType<AddBookCommand>().Named<ICommand>("addbook").InstancePerDependency();
+            builder.RegisterType<FindBookByTitleCommand>().Named<ICommand>("findbookbytitle").InstancePerDependency();
+            builder.RegisterType<PrintAllBooksCommand>().Named<ICommand>("printallbooks").InstancePerDependency();
+            builder.RegisterType<RemoveBookCommand>().Named<ICommand>("removebook").InstancePerDependency();
+
+
         }
     }
 }
