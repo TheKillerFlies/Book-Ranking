@@ -28,8 +28,7 @@ namespace BookRanking.Engine.Commands
 
             var author = this.DTOFactory.CreateAuthorDTO(firstName, lastName, alias);
             var books = this.authorService.GetBooksByAuthor(author);
-
-            
+         
             return this.PrintBooks(books);
         }
 
@@ -42,7 +41,6 @@ namespace BookRanking.Engine.Commands
             }
 
             return booksPrint.ToString();
-
         }
     }
 }

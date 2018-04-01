@@ -29,7 +29,7 @@ namespace BookRanking.Engine.Commands.AuthorCommands
             var author = this.DTOFactory.CreateAuthorDTO(firstName, lastName, alias);
             this.authorService.RemoveAuthor(author);
 
-            return null;
+            return Messages.authorRemoved;
         }
     }
 }

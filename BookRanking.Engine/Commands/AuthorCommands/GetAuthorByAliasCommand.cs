@@ -1,4 +1,5 @@
-﻿using BookRanking.Engine.Commands.Contracts;
+﻿using BookRanking.DTO;
+using BookRanking.Engine.Commands.Contracts;
 using BookRanking.Engine.Factories.Contracts;
 using BookRanking.Logic.Contracts;
 using System;
@@ -23,6 +24,12 @@ namespace BookRanking.Engine.Commands
         {
             var alias = parameters[0];
             var author = this.authorService.GetAuthorByAlias(alias);
+
+            return this.PrintAuthor(author);
+        }
+
+        private string PrintAuthor(AuthorDTO author)
+        {
             return string.Format("{0} {1}", author.FirstName, author.LastName);
         }
     }
