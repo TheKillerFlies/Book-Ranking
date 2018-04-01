@@ -24,7 +24,7 @@ namespace BookRanking.Engine.Commands.PublisherCommands
             var name = parameters[0];
             var publisher = this.DTOFactory.CreatePublisherDTO(name);
             this.publisherService.RemovePublisher(publisher);
-            return "";
+            return Messages.publisherRemoved;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace BookRanking.Engine.Commands.PublisherCommands
             var name = parameters[0];
             var publisher = this.DTOFactory.CreatePublisherDTO(name);
             this.publisherService.AddPublisher(publisher);
-            return "";
+            return Messages.publisherAdded;
         }
     }
 }

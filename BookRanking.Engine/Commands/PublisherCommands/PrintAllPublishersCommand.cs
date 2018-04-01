@@ -1,4 +1,5 @@
-﻿using BookRanking.Engine.Commands.Contracts;
+﻿using BookRanking.DTO;
+using BookRanking.Engine.Commands.Contracts;
 using BookRanking.Engine.Factories.Contracts;
 using BookRanking.Logic;
 using BookRanking.Logic.Contracts;
@@ -23,7 +24,18 @@ namespace BookRanking.Engine.Commands.PublisherCommands
         {
             var publishers = this.publisherService.GetAllPublishers();
 
-            return "";
+            return this.PrintPublishers(publishers);
+        }
+
+        private string PrintPublishers(IEnumerable<PublisherDTO> publishers)
+        {
+            var publishersPrint = new StringBuilder();
+            foreach (var publisher in publishers)
+            {
+                publishersPrint.AppendLine(string.Format("Name: {0}", publisher.Name));
+            }
+
+            return publishersPrint.ToString();
         }
     }
 }
