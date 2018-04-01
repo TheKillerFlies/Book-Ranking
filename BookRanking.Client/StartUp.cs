@@ -1,19 +1,17 @@
-﻿using System;
+﻿using Autofac;
+using AutoMapper;
+using BookRanking.Client.AutofacModules;
+using BookRanking.Common;
+using BookRanking.Context;
+using BookRanking.Context.Migrations;
+using BookRanking.DTO;
+using BookRanking.Logic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
-using BookRanking.Context;
-using BookRanking.Context.Migrations;
-using AutoMapper;
-using Autofac;
-using BookRanking.Common;
-using BookRanking.DTO;
-using BookRanking.Logic;
-using BookRanking.Client.AutofacModules;
-using BookRanking.Data.Models;
-using BookRanking.Engine.Commands.Contracts;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace BookRanking.Client
 {
