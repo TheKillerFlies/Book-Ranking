@@ -1,18 +1,17 @@
-﻿using System;
-using System.Data.Entity;
+﻿using Autofac;
+using AutoMapper;
+using BookRanking.Client.AutofacModules;
+using BookRanking.Common;
 using BookRanking.Context;
 using BookRanking.Context.Migrations;
-using AutoMapper;
-using Autofac;
-using System.Reflection;
-using BookRanking.Common;
-using BookRanking.Logic.Contracts;
 using BookRanking.DTO;
 using BookRanking.Logic;
-using BookRanking.Client.AutofacModules;
-using BookRanking.Client.Engine.Contracts;
-using BookRanking.Engine.Commands.Contracts;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
 
 namespace BookRanking.Client
 {
@@ -29,55 +28,50 @@ namespace BookRanking.Client
             var authorService = new AuthorService(context, Mapper.Instance);
             var publisherService = new PublisherService(context, Mapper.Instance);
             var bookService = new BookService(authorService, publisherService, context, Mapper.Instance);
+        }
 
-            //var comm = container.ResolveNamed<ICommand>("addauthor");
-            //var engine = container.Resolve<IBookEngine>();
+        private static void FillDbUsingJsonFiles(BookRankingDbContext context, AuthorService authorService, PublisherService publisherService, BookService bookService)
+        {
+            using (var dbContextTransaction = context.Database.BeginTransaction())
+            {
+                try
+                {
+                    var settings = new JsonSerializerSettings();
+                    settings.TypeNameHandling = TypeNameHandling.Auto;
 
-            //engine.Start();
+                    var file = File.ReadAllText("publishers.json");
+                    var publishers = ((JArray)JsonConvert.DeserializeObject(file, settings)).ToObject<List<PublisherDTO>>();
 
-            var publisher = new PublisherDTO("khh35");
-            var author = new AuthorDTO("Strphen", "Knig", "It");
-            var book = new BookDTO("Kaska", 2000, publisher, author);
+                    foreach (var publisher in publishers)
+                    {
+                        publisherService.AddPublisher(publisher);
+                    }
 
-            //var books = bookService.GetAllBooks();
-            //foreach (var item in books)
-            //{
-            //    Console.WriteLine(item.Title);
-            //}
+                    file = File.ReadAllText("authors.json");
+                    var authors = ((JArray)JsonConvert.DeserializeObject(file, settings)).ToObject<List<AuthorDTO>>();
 
-            //authorService.AddAuthor(new AuthorDTO("Strphen", "Knig", "It"));
+                    foreach (var author in authors)
+                    {
+                        authorService.AddAuthor(author);
+                    }
 
-            //var authors = authorService.GetAllAuthors();
-            //foreach (var item in authors)
-            //{
-            //    Console.WriteLine(item.FirstName);
-            //}
+                    file = File.ReadAllText("book.json");
+                    var books = ((JArray)JsonConvert.DeserializeObject(file, settings)).ToObject<List<BookDTO>>();
 
-            bookService.AddBook(book, author, publisher);
+                    foreach (var book in books)
+                    {
+                        bookService.AddBook(book);
+                    }
 
-            //var bookFind = bookService.FindBookByTitle("The345Lake");
-            //Console.WriteLine(book.Author.FirstName);
+                    context.SaveChanges();
 
-            //var aa = authorService.GetAuthorByAlias("alias34");
-            //Console.WriteLine(aa.FirstName);
-            //var authors = authorService.GetAllAuthors();
-            //foreach (var item in authors)
-            //{
-            //    Console.WriteLine(item.FirstName);
-            //}
-
-            //var books = authorService.GetBooksByAuthor("Strphen", "Knig");
-            //foreach (var item in books)
-            //{
-            //    Console.WriteLine(item.Title);
-            //}
-            //var books = authorService.GetBooksByAuthor("fname", "lname");
-            //foreach (var item in books)
-            //{
-            //    Console.WriteLine(item.Title);
-            //}
-            //var b = bookService.FindBookByTitle("kniga1");
-            //Console.WriteLine(b.Publisher.Name);
+                    dbContextTransaction.Commit();
+                }
+                catch (Exception e)
+                {
+                    dbContextTransaction.Rollback();
+                }
+            }
         }
 
         private static void Init()

@@ -10,6 +10,10 @@ namespace BookRanking.Logic.Contracts
 
         void AddAuthor(AuthorDTO author);
 
+        void RemoveAuthor(AuthorDTO author);
+
         AuthorDTO GetAuthorByAlias(string alias);
+
+        IEnumerable<BookDTO> GetBooksByAuthor(AuthorDTO authorDTO);
     }
 }
