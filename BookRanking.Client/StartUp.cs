@@ -54,6 +54,7 @@ namespace BookRanking.Client
             //}
 
             //bookService.AddBook(book, author, publisher);
+
             var bookFind = bookService.FindBookByTitle("The345Lake");
             Console.WriteLine(book.Author.FirstName);
 
