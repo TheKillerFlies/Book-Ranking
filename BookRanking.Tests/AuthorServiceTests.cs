@@ -28,11 +28,7 @@ namespace BookRanking.Tests
             mockContext.Setup(x => x.Authors.Add(It.IsAny<Author>())).Callback<Author>(x => authors.Add(x));
 
             // Act
-            var authorToAdd = new AuthorDTO()
-            {
-                FirstName = "Pencho",
-                LastName = "Karalijchev"
-            };
+            var authorToAdd = new AuthorDTO("Pencho", "Karalijchev", "PPP");
 
             service.AddAuthor(authorToAdd);
 

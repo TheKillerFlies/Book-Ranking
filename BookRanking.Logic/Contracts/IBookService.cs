@@ -10,11 +10,10 @@ namespace BookRanking.Logic.Contracts
 
         void RemoveBook(BookDTO bookDTO);
 
-        void AddBook(BookDTO bookDTO, List<AuthorDTO> authors, PublisherDTO publisher);
+        void AddBook(BookDTO bookDTO, AuthorDTO author, PublisherDTO publisher);
 
         BookDTO FindBookByTitle(string title);
+
        // void UpdateBook(BookDTO bookDTO);
-
-
     }
 }

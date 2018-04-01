@@ -10,7 +10,7 @@ namespace BookRanking.Engine.Factories.Contracts
     public interface IDTOFactory
     {
         AuthorDTO CreateAuthorDTO(string firstName, string lastName, string alias);
-        BookDTO CreateBookDTO(string title, int publishedYear, PublisherDTO publisher);
+        BookDTO CreateBookDTO(string title, int publishedYear, PublisherDTO publisher, AuthorDTO author);
         PublisherDTO CreatePublisherDTO(string name);
     }
 }

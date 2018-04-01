@@ -28,7 +28,6 @@ namespace BookRanking.Client.AutofacModules
             builder.RegisterType<CommandFactory>().As<ICommandFactory>().SingleInstance();
             builder.Register(x => Mapper.Instance);
             builder.RegisterType<AddAuthorCommand>().Named<ICommand>("addаuthor");
-
         }
     }
 }

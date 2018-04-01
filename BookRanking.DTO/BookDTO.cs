@@ -7,11 +7,11 @@ namespace BookRanking.DTO
 {
     public class BookDTO :  IMapTo<Book>
     {
-        public BookDTO(string title, int publishedYear, PublisherDTO publisher)
+        public BookDTO(string title, int publishedYear, PublisherDTO publisher, AuthorDTO author)
         {
             this.Title = title;
             this.PublishedYear = publishedYear;
-            this.AuthorDTOs = new HashSet<AuthorDTO>();
+            this.Author = author;
             this.Publisher = publisher;
         }
 
@@ -19,7 +19,7 @@ namespace BookRanking.DTO
 
         public int PublishedYear { get; private set; }
 
-        public ICollection<AuthorDTO> AuthorDTOs { get; private set; }
+        public AuthorDTO Author { get; private set; }
 
         public PublisherDTO Publisher { get; private set; }
 

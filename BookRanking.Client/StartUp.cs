@@ -21,31 +21,33 @@ namespace BookRanking.Client
         public static void Main(string[] args)
         {
             Init();
-            //var builder = new ContainerBuilder();
-            //var injectionConfig = new AutofacModule();
-            //builder.RegisterModule(injectionConfig);
+            var builder = new ContainerBuilder();
+            var injectionConfig = new AutofacModule();
+            builder.RegisterModule(injectionConfig);
+            var container = builder.Build();
+            var context = new BookRankingDbContext();
+            var authorService = new AuthorService(context, Mapper.Instance);
+            var publisherService = new PublisherService(context, Mapper.Instance);
+            var bookService = new BookService(authorService, publisherService, context, Mapper.Instance);
 
-            //var container = builder.Build();
             //var comm = container.ResolveNamed<ICommand>("addauthor");
             //var engine = container.Resolve<IBookEngine>();
 
             //engine.Start();
 
-            var publisher = new PublisherDTO("khh3");
-            var authors = new List<AuthorDTO>();
-            authors.Add(new AuthorDTO("fname", "lname", "alias"));
-            var book = new BookDTO("book1", 2000, publisher);
-            var context = new BookRankingDbContext();
-            var authorService = new AuthorService(context, Mapper.Instance);
-            var publisherService = new PublisherService(context, Mapper.Instance);
+            var publisher = new PublisherDTO("khh35");
+            var author = new AuthorDTO("fname456", "lname123", "alias34");
+            var book = new BookDTO("book13", 2000, publisher, author);
 
-            var bookService = new BookService(authorService, publisherService, context, Mapper.Instance);
-            // bookService.AddBook(book, authors, publisher);
-            var books = authorService.GetBooksByAuthor("fname", "lname");
-            foreach (var item in books)
-            {
-                Console.WriteLine(item.Title);
-            }
+
+
+            //authorService.AddAuthor(new AuthorDTO("fname", "lname", "alias"));
+            bookService.AddBook(book, author, publisher);
+            //var books = authorService.GetBooksByAuthor("fname", "lname");
+            //foreach (var item in books)
+            //{
+            //    Console.WriteLine(item.Title);
+            //}
             //var b = bookService.FindBookByTitle("kniga1");
             //Console.WriteLine(b.Publisher.Name);
 

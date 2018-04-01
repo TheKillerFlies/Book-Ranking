@@ -15,9 +15,9 @@ namespace BookRanking.Engine.Factories
             return new AuthorDTO(firstName, lastName, alias);
         }
 
-        public BookDTO CreateBookDTO(string title, int publishedYear, PublisherDTO publisher)
+        public BookDTO CreateBookDTO(string title, int publishedYear, PublisherDTO publisher, AuthorDTO author)
         {
-            return new BookDTO(title, publishedYear, publisher);
+            return new BookDTO(title, publishedYear, publisher, author);
         }
 
         public PublisherDTO CreatePublisherDTO(string name)

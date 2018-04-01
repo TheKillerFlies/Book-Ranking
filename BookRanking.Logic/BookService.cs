@@ -6,7 +6,6 @@ using BookRanking.DTO;
 using BookRanking.Logic.Contracts;
 using System;
 using System.Linq;
-using AutoMapper;
 using System.Collections.Generic;
 
 namespace BookRanking.Logic
@@ -35,7 +34,7 @@ namespace BookRanking.Logic
             return bookDTOs;
         }
 
-        public void AddBook(BookDTO book, List<AuthorDTO> authors, PublisherDTO publisher)
+        public void AddBook(BookDTO book, AuthorDTO author, PublisherDTO publisher)
         {
             if (book == null)
             {
@@ -49,15 +48,12 @@ namespace BookRanking.Logic
 
             if (!this.dbContext.Books.Any(b => b.Title == book.Title && b.PublishedYear == book.PublishedYear))
             {
-                foreach (var author in authors)
+                if (!this.dbContext.Authors
+                   .Any(x => x.FirstName == author.FirstName
+                   && x.LastName == author.LastName
+                   && x.Alias == author.Alias))
                 {
-                    if (!this.dbContext.Authors
-                       .Any(x => x.FirstName == author.FirstName
-                       && x.LastName == author.LastName
-                       && x.Alias == author.Alias))
-                    {
-                        this.authorService.AddAuthor(author);
-                    }
+                    this.authorService.AddAuthor(author);
                 }
 
                 if (!this.dbContext.Publishers.ToList().Any(x => x.Name == publisher.Name))
@@ -66,9 +62,10 @@ namespace BookRanking.Logic
                 }
 
                 var bookToAdd = this.mapper.Map<Book>(book);
+                bookToAdd.Author = this.dbContext.Authors.First(a => a.FirstName == author.FirstName && a.LastName == author.LastName && a.Alias == author.Alias);
                 bookToAdd.Publisher = this.dbContext.Publishers.First(p => p.Name == book.Publisher.Name);
                 this.dbContext.Books.Add(bookToAdd);
-                
+
                 this.dbContext.SaveChanges();
             }
             else
@@ -81,7 +78,7 @@ namespace BookRanking.Logic
         {
             var book = this.dbContext.Books.First(x => x.Title == title);
             book.Publisher = this.dbContext.Publishers.First(p => p.Id == book.PublisherId);
-            return Mapper.Instance.Map<BookDTO>(book);    
+            return Mapper.Instance.Map<BookDTO>(book);
         }
 
 

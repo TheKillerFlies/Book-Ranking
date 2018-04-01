@@ -17,10 +17,13 @@ namespace BookRanking.Data.Models
 
         public int Id { get; set; }
 
+        [Required]
         public string FirstName { get; set; }
 
+        [Required]
         public string LastName { get; set; }
 
+        [Required]
         public string Alias { get; set; }
 
         public virtual ICollection<Book> Books
