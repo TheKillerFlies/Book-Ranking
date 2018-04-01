@@ -12,22 +12,16 @@ namespace BookRanking.Engine.Engine
         public IEnumerable<string> Input()
         {
             var currentLine = Console.ReadLine();
-            while (!string.IsNullOrEmpty(currentLine))
+            while (currentLine!="end")
             {
                 yield return currentLine;
                 currentLine = Console.ReadLine();
             }
         }
 
-        public void Output(IEnumerable<string> output)
+        public void Output(string output)
         {
-            var result = new StringBuilder();
-            foreach (var line in output)
-            {
-                result.AppendLine(line);
-            }
-
-            Console.Write(result.ToString());
+            Console.WriteLine(output);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace BookRanking.Client.AutofacModules
             builder.RegisterType<CommandFactory>().As<ICommandFactory>().SingleInstance();
             builder.RegisterType<DTOFactory>().As<IDTOFactory>().SingleInstance();
             builder.RegisterType<AddAuthorCommand>().Named<ICommand>("addauthor").InstancePerDependency();
-            builder.RegisterType<PrintAllAuthorsCommand>().Named<ICommand>("getallauthors").InstancePerDependency();
+            builder.RegisterType<PrintAllAuthorsCommand>().Named<ICommand>("printallauthors").InstancePerDependency();
             builder.RegisterType<GetBooksByAuthorCommand>().Named<ICommand>("getbooksbyauthor").InstancePerDependency();
             builder.RegisterType<RemoveAuthorCommand>().Named<ICommand>("removeauthor").InstancePerDependency();
             builder.RegisterType<AddPublisherCommand>().Named<ICommand>("addpublisher").InstancePerDependency();

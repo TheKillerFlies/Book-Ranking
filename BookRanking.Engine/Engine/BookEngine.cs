@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using System.Text;
+
 namespace BookRanking.Client.Engine
 {
     public class BookEngine : IBookEngine
@@ -22,38 +24,22 @@ namespace BookRanking.Client.Engine
 
         public void Start()
         {
-            var commandResults = new List<string>();
-
+            var commandResults = new StringBuilder();
            
                 foreach (var currentLine in this.renderer.Input())
                 {
-                    this.ProcessCommand(currentLine);
+                    this.renderer.Output(this.ProcessCommand(currentLine));
                 }
-
         }
 
-        private void ProcessCommand(string commandLine)
+        private string ProcessCommand(string commandLine)
         {
             var commandParts = commandLine.Split(' ').ToList();
 
             var commandName = commandParts[0];
             var commandParameters = commandParts.Skip(1).ToList();
             var command = this.factory.GetCommand(commandName.ToLower());
-            command.Execute(commandParameters);
+            return command.Execute(commandParameters);
         }
-        //private readonly IScreenPrinter printer;
-
-        //public BookEngine(IScreenPrinter printer)
-        //{
-        //    this.printer = printer ?? throw new ArgumentNullException();
-        //}
-
-        //public IScreenPrinter Printer { get { return this.printer; } }
-
-        //public void Start()
-        //{
-        //    this.Printer.PrintStartScreen();
-        //    this.Printer.PrintChooseCommandScreen();
-        //}
     }
 }
