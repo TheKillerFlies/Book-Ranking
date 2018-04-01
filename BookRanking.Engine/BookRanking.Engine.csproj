@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AuthorCommands\AddAuthorCommand.cs" />
+    <Compile Include="Commands\AuthorCommands\ExportAllAuthorsCommand.cs" />
     <Compile Include="Commands\AuthorCommands\PrintAllAuthorsCommand.cs" />
     <Compile Include="Commands\AuthorCommands\RemoveAuthorCommand.cs" />
     <Compile Include="Commands\BookCommands\AddBookCommand.cs" />
@@ -64,8 +65,8 @@
     <Compile Include="Commands\BookCommands\RemoveBookCommand.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
-    <Compile Include="Commands\AuthorCommands\GetBooksByAuthorCommand.cs" />
-    <Compile Include="Commands\AuthorCommands\GetAuthorByAliasCommand.cs" />
+    <Compile Include="Commands\AuthorCommands\PrintBooksByAuthorCommand.cs" />
+    <Compile Include="Commands\AuthorCommands\PrintAuthorByAliasCommand.cs" />
     <Compile Include="Commands\Messages.cs" />
     <Compile Include="Commands\PublisherCommands\AddPublisherCommand.cs" />
     <Compile Include="Commands\PublisherCommands\PrintAllPublishersCommand.cs" />

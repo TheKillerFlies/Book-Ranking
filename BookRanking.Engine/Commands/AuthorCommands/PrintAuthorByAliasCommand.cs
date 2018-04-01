@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace BookRanking.Engine.Commands
 {
-    public class GetAuthorByAliasCommand :Command, ICommand
+    public class PrintAuthorByAliasCommand :Command, ICommand
     {
         private readonly IAuthorService authorService;
 
-        public GetAuthorByAliasCommand(IDTOFactory DTOFactory, IAuthorService authorService)
+        public PrintAuthorByAliasCommand(IDTOFactory DTOFactory, IAuthorService authorService)
             :base(DTOFactory)
         {
             this.authorService = authorService;

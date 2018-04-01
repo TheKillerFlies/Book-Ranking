@@ -47,6 +47,7 @@ namespace BookRanking.Logic
             {
                 throw new ArgumentException();
             }
+            
             if (!this.dbContext.Authors
                         .Any(x => x.FirstName == author.FirstName
                         && x.LastName == author.LastName

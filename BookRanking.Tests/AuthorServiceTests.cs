@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using AutoMapper;
 using BookRanking.Context;
 using BookRanking.Data.Models;
@@ -25,16 +27,16 @@ namespace BookRanking.Tests
             List<Author> authors = new List<Author>() { };
             var authorsMock = authors.GetQueryableMockDbSet();
 
+            var authorToAdd = new AuthorDTO("Pencho", "Karalijchev", "PPP");
             mockContext.Setup(x => x.Authors).Returns(authorsMock);
-            mockContext.Setup(x => x.Authors.Add(It.IsAny<Author>())).Callback<Author>(x => authors.Add(x));
+            mockContext.Setup(x => x.Authors.Add(It.Is<Author>(a => a.FirstName == authorToAdd.FirstName && a.LastName== authorToAdd.LastName && a.Alias== authorToAdd.Alias)));
 
             // Act
-            var authorToAdd = new AuthorDTO("Pencho", "Karalijchev", "PPP");
 
             service.AddAuthor(authorToAdd);
 
             // Assert
-            mockContext.Verify(x => x.Authors.Add(It.IsAny<Author>()), Times.Once);
+            mockContext.Verify(x => x.Authors.Add(It.Is<Author>(a => a.FirstName == authorToAdd.FirstName && a.LastName == authorToAdd.LastName && a.Alias == authorToAdd.Alias)), Times.Once);
         }
 
         [TestMethod]

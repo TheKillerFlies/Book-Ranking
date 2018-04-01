@@ -24,7 +24,7 @@ namespace BookRanking.Engine.Commands.BookCommands
             var year = parameters[1];
             var book = this.DTOFactory.CreateBookDTO(title, int.Parse(year), null, null);
             this.bookService.RemoveBook(book);
-            return Messages.bookRemoved;
+            return Messages.BookRemoved;
         }
     }
 }

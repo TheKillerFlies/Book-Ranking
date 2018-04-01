@@ -36,7 +36,7 @@ namespace BookRanking.Client.AutofacModules
             builder.RegisterType<PdfExporter>().As<IPdfExporter>().InstancePerDependency();
             builder.RegisterType<AddAuthorCommand>().Named<ICommand>("addauthor").InstancePerDependency();
             builder.RegisterType<PrintAllAuthorsCommand>().Named<ICommand>("printallauthors").InstancePerDependency();
-            builder.RegisterType<GetBooksByAuthorCommand>().Named<ICommand>("getbooksbyauthor").InstancePerDependency();
+            builder.RegisterType<PrintBooksByAuthorCommand>().Named<ICommand>("getbooksbyauthor").InstancePerDependency();
             builder.RegisterType<RemoveAuthorCommand>().Named<ICommand>("removeauthor").InstancePerDependency();
             builder.RegisterType<AddPublisherCommand>().Named<ICommand>("addpublisher").InstancePerDependency();
             builder.RegisterType<PrintAllPublishersCommand>().Named<ICommand>("getallpublishers").InstancePerDependency();
@@ -45,6 +45,7 @@ namespace BookRanking.Client.AutofacModules
             builder.RegisterType<FindBookByTitleCommand>().Named<ICommand>("findbookbytitle").InstancePerDependency();
             builder.RegisterType<PrintAllBooksCommand>().Named<ICommand>("printallbooks").InstancePerDependency();
             builder.RegisterType<RemoveBookCommand>().Named<ICommand>("removebook").InstancePerDependency();
+            builder.RegisterType<ExportAllAuthorsCommand>().Named<ICommand>("exportallauthors").InstancePerDependency();
 
 
         }

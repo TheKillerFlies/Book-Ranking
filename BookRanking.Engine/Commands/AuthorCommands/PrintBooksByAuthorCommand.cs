@@ -3,14 +3,15 @@ using BookRanking.Engine.Commands.Contracts;
 using BookRanking.Engine.Factories.Contracts;
 using BookRanking.Logic.Contracts;
 using System.Collections.Generic;
+using System.Text;
 
 namespace BookRanking.Engine.Commands
 {
-    public class GetBooksByAuthorCommand : Command, ICommand
+    public class PrintBooksByAuthorCommand : Command, ICommand
     {
         private readonly IAuthorService authorService;
 
-        public GetBooksByAuthorCommand(IDTOFactory DTOFactory, IAuthorService authorService)
+        public PrintBooksByAuthorCommand(IDTOFactory DTOFactory, IAuthorService authorService)
             :base(DTOFactory)
         {
             this.authorService = authorService;

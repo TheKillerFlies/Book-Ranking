@@ -33,7 +33,7 @@ namespace BookRanking.Engine.Commands.BookCommands
             var author = this.DTOFactory.CreateAuthorDTO(authorFirstName, authorLastName, alias);
             var book = this.DTOFactory.CreateBookDTO(title, int.Parse(year), publisher, author);
             this.bookService.AddBook(book);
-            return Messages.bookAdded;
+            return Messages.BookAdded;
         }
     }
 }
