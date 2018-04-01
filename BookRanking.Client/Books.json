@@ -3,9 +3,7 @@
     {
       "Title": "The little prince",
       "Pages": 100,
-      "Author": [
-        "Antoine Exupery"
-      ],
+      "Author": { "Name": "Antoine Exupery" },
       "Year": 1943,
       "Publisher": "Some publisher"
     },

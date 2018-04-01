@@ -12,6 +12,7 @@ namespace BookRanking.DTO
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Alias = alias;
+            this.BookDTOs = new List<BookDTO>();
         }
         public string FirstName { get; private set; }
 

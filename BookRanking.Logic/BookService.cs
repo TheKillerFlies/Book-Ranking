@@ -34,7 +34,7 @@ namespace BookRanking.Logic
             return bookDTOs;
         }
 
-        public void AddBook(BookDTO book, AuthorDTO author, PublisherDTO publisher)
+        public void AddBook(BookDTO book)
         {
             if (book == null)
             {
@@ -49,20 +49,20 @@ namespace BookRanking.Logic
             if (!this.dbContext.Books.Any(b => b.Title == book.Title && b.PublishedYear == book.PublishedYear))
             {
                 if (!this.dbContext.Authors
-                   .Any(x => x.FirstName == author.FirstName
-                   && x.LastName == author.LastName
-                   && x.Alias == author.Alias))
+                   .Any(x => x.FirstName == book.Author.FirstName
+                   && x.LastName == book.Author.LastName
+                   && x.Alias == book.Author.Alias))
                 {
-                    this.authorService.AddAuthor(author);
+                    this.authorService.AddAuthor(book.Author);
                 }
 
-                if (!this.dbContext.Publishers.ToList().Any(x => x.Name == publisher.Name))
+                if (!this.dbContext.Publishers.ToList().Any(x => x.Name == book.Publisher.Name))
                 {
-                    this.publisherService.AddPublisher(publisher);
+                    this.publisherService.AddPublisher(book.Publisher);
                 }
 
                 var bookToAdd = this.mapper.Map<Book>(book);
-                bookToAdd.Author = this.dbContext.Authors.First(a => a.FirstName == author.FirstName && a.LastName == author.LastName && a.Alias == author.Alias);
+                bookToAdd.Author = this.dbContext.Authors.First(a => a.FirstName == book.Author.FirstName && a.LastName == book.Author.LastName && a.Alias == book.Author.Alias);
                 bookToAdd.Publisher = this.dbContext.Publishers.First(p => p.Name == book.Publisher.Name);
                 this.dbContext.Books.Add(bookToAdd);
 
