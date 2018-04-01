@@ -3,6 +3,8 @@ using AutoMapper;
 using BookRanking.Client.Engine;
 using BookRanking.Client.Engine.Contracts;
 using BookRanking.Client.Models;
+using BookRanking.Common.Utils;
+using BookRanking.Common.Utils.Contracts;
 using BookRanking.Context;
 using BookRanking.Engine.Commands;
 using BookRanking.Engine.Commands.AuthorCommands;
@@ -29,6 +31,7 @@ namespace BookRanking.Client.AutofacModules
             builder.RegisterType<BookEngine>().As<IBookEngine>().SingleInstance();
             builder.RegisterType<CommandFactory>().As<ICommandFactory>().SingleInstance();
             builder.RegisterType<DTOFactory>().As<IDTOFactory>().SingleInstance();
+            builder.RegisterType<PdfExporter>().As<IPdfExporter>().InstancePerDependency();
             builder.RegisterType<AddAuthorCommand>().Named<ICommand>("addauthor").InstancePerDependency();
             builder.RegisterType<GetAllAuthorsCommand>().Named<ICommand>("getallauthors").InstancePerDependency();
             builder.RegisterType<GetBooksByAuthorCommand>().Named<ICommand>("getbooksbyauthor").InstancePerDependency();
