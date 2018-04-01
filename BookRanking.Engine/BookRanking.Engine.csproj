@@ -52,8 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\AddAuthorCommand.cs" />
+    <Compile Include="Commands\AuthorCommands\AddAuthorCommand.cs" />
+    <Compile Include="Commands\AuthorCommands\GetAllAuthorsCommand.cs" />
+    <Compile Include="Commands\AuthorCommands\RemoveAuthorCommand.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Commands\AuthorCommands\GetBooksByAuthorCommand.cs" />
+    <Compile Include="Commands\GetAuthorByAliasCommand.cs" />
     <Compile Include="Engine\BookEngine.cs" />
     <Compile Include="Engine\ConsoleRenderer.cs" />
     <Compile Include="Engine\Contracts\IBookEngine.cs" />

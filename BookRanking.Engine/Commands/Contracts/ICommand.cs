@@ -8,6 +8,6 @@ namespace BookRanking.Engine.Commands.Contracts
 {
     public interface ICommand
     {
-        void Execute(IList<string> parameters);
+        object Execute(IList<string> parameters);
     }
 }
