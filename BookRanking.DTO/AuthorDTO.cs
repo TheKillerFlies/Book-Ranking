@@ -7,6 +7,11 @@ namespace BookRanking.DTO
 {
     public class AuthorDTO : IMapTo<Author>
     {
+        public AuthorDTO()
+        {
+            
+        }
+
         public AuthorDTO(string firstName, string lastName, string alias)
         {
             this.FirstName = firstName;

@@ -7,6 +7,7 @@ using BookRanking.Context;
 using BookRanking.Data.Models;
 using BookRanking.DTO;
 using BookRanking.Logic;
+using Effort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -19,24 +20,22 @@ namespace BookRanking.Tests
         public void AddAuthor()
         {
             // Arrange
-            var mockContext = new Mock<IBookRankingDbContext>();
+            //var context = new BookRankingDbContext(DbConnectionFactory.CreateTransient());
+            var context = new Mock<IBookRankingDbContext>();
             var mockMapper = new Mock<IMapper>();
+            var authorDTOMock = new Mock<AuthorDTO>();
+            var authorMock = new Mock<Author>();
+            mockMapper.Setup(m => m.Map<Author>(authorDTOMock.Object)).Returns(authorMock.Object);
+            var authors = new FakeDbSet<Author>();
+            context.Setup(c => c.Authors).Returns(authors);
 
-            var service = new AuthorService(mockContext.Object, mockMapper.Object);
-
-            List<Author> authors = new List<Author>() { };
-            var authorsMock = authors.GetQueryableMockDbSet();
-
-            var authorToAdd = new AuthorDTO("Pencho", "Karalijchev", "PPP");
-            mockContext.Setup(x => x.Authors).Returns(authorsMock);
-            mockContext.Setup(x => x.Authors.Add(It.Is<Author>(a => a.FirstName == authorToAdd.FirstName && a.LastName== authorToAdd.LastName && a.Alias== authorToAdd.Alias)));
+            var service = new AuthorService(context.Object, mockMapper.Object);
 
             // Act
-
-            service.AddAuthor(authorToAdd);
+            service.AddAuthor(authorDTOMock.Object);
 
             // Assert
-            mockContext.Verify(x => x.Authors.Add(It.Is<Author>(a => a.FirstName == authorToAdd.FirstName && a.LastName == authorToAdd.LastName && a.Alias == authorToAdd.Alias)), Times.Once);
+            Assert.IsTrue(context.Object.Authors.Contains(authorMock.Object));
         }
 
         [TestMethod]
