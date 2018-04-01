@@ -12,6 +12,7 @@ using BookRanking.Logic;
 using BookRanking.Client.AutofacModules;
 using BookRanking.Client.Engine.Contracts;
 using BookRanking.Engine.Commands.Contracts;
+using System.Collections.Generic;
 
 namespace BookRanking.Client
 {
@@ -30,22 +31,25 @@ namespace BookRanking.Client
 
             //engine.Start();
 
-            //var publisher = new PublisherDTO("khh3");
-            //var author = new AuthorDTO("fname", "lname", "alias");
-            //var book = new BookDTO("kniga1234", 2000, publisher); 
+            var publisher = new PublisherDTO("khh3");
+            var authors = new List<AuthorDTO>();
+            authors.Add(new AuthorDTO("fname", "lname", "alias"));
+            var book = new BookDTO("book1", 2000, publisher);
             var context = new BookRankingDbContext();
             var authorService = new AuthorService(context, Mapper.Instance);
             var publisherService = new PublisherService(context, Mapper.Instance);
 
             var bookService = new BookService(authorService, publisherService, context, Mapper.Instance);
-
-            //var b = bookService.FindBookByTitle("kniga1");
-            //Console.WriteLine(b.Publisher.Name);
-            var books = bookService.GetAllBooks();
+            // bookService.AddBook(book, authors, publisher);
+            var books = authorService.GetBooksByAuthor("fname", "lname");
             foreach (var item in books)
             {
                 Console.WriteLine(item.Title);
-            }  
+            }
+            //var b = bookService.FindBookByTitle("kniga1");
+            //Console.WriteLine(b.Publisher.Name);
+
+
         }
 
         private static void Init()

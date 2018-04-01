@@ -35,7 +35,7 @@ namespace BookRanking.Logic
             return bookDTOs;
         }
 
-        public void AddBook(BookDTO book)
+        public void AddBook(BookDTO book, List<AuthorDTO> authors, PublisherDTO publisher)
         {
             if (book == null)
             {
@@ -49,7 +49,7 @@ namespace BookRanking.Logic
 
             if (!this.dbContext.Books.Any(b => b.Title == book.Title && b.PublishedYear == book.PublishedYear))
             {
-                foreach (var author in book.AuthorDTOs)
+                foreach (var author in authors)
                 {
                     if (!this.dbContext.Authors
                        .Any(x => x.FirstName == author.FirstName
@@ -60,14 +60,15 @@ namespace BookRanking.Logic
                     }
                 }
 
-                if (!this.dbContext.Publishers.ToList().Any(x => x.Name == book.Publisher.Name))
+                if (!this.dbContext.Publishers.ToList().Any(x => x.Name == publisher.Name))
                 {
-                    this.publisherService.AddPublisher(book.Publisher);
+                    this.publisherService.AddPublisher(publisher);
                 }
 
                 var bookToAdd = this.mapper.Map<Book>(book);
                 bookToAdd.Publisher = this.dbContext.Publishers.First(p => p.Name == book.Publisher.Name);
                 this.dbContext.Books.Add(bookToAdd);
+                
                 this.dbContext.SaveChanges();
             }
             else

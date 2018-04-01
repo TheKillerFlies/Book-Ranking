@@ -29,6 +29,18 @@ namespace BookRanking.Logic
             return authorDTOs;
         }
 
+        public IEnumerable<BookDTO> GetBooksByAuthor(string firstName, string lastName)
+        {
+            var author = this.dbContext.Authors.First(x => x.FirstName == firstName && x.LastName == lastName);
+            var books = author.Books;
+            var bookDTOs = new List<BookDTO>();
+            foreach (var book in books)
+            {
+                bookDTOs.Add(this.mapper.Map<BookDTO>(book));
+            }
+            return bookDTOs;
+        }
+
         public void AddAuthor(AuthorDTO author)
         {
             if (author == null)
