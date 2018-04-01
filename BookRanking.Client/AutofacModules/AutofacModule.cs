@@ -8,7 +8,9 @@ using BookRanking.Common.Utils.Contracts;
 using BookRanking.Context;
 using BookRanking.Engine.Commands;
 using BookRanking.Engine.Commands.AuthorCommands;
+using BookRanking.Engine.Commands.BookCommands;
 using BookRanking.Engine.Commands.Contracts;
+using BookRanking.Engine.Commands.PublisherCommands;
 using BookRanking.Engine.Engine;
 using BookRanking.Engine.Engine.Contracts;
 using BookRanking.Engine.Factories;
@@ -33,9 +35,17 @@ namespace BookRanking.Client.AutofacModules
             builder.RegisterType<DTOFactory>().As<IDTOFactory>().SingleInstance();
             builder.RegisterType<PdfExporter>().As<IPdfExporter>().InstancePerDependency();
             builder.RegisterType<AddAuthorCommand>().Named<ICommand>("addauthor").InstancePerDependency();
-            builder.RegisterType<GetAllAuthorsCommand>().Named<ICommand>("getallauthors").InstancePerDependency();
+            builder.RegisterType<PrintAllAuthorsCommand>().Named<ICommand>("printallauthors").InstancePerDependency();
             builder.RegisterType<GetBooksByAuthorCommand>().Named<ICommand>("getbooksbyauthor").InstancePerDependency();
             builder.RegisterType<RemoveAuthorCommand>().Named<ICommand>("removeauthor").InstancePerDependency();
+            builder.RegisterType<AddPublisherCommand>().Named<ICommand>("addpublisher").InstancePerDependency();
+            builder.RegisterType<PrintAllPublishersCommand>().Named<ICommand>("getallpublishers").InstancePerDependency();
+            builder.RegisterType<RemovePublisherCommand>().Named<ICommand>("removepublisher").InstancePerDependency();
+            builder.RegisterType<AddBookCommand>().Named<ICommand>("addbook").InstancePerDependency();
+            builder.RegisterType<FindBookByTitleCommand>().Named<ICommand>("findbookbytitle").InstancePerDependency();
+            builder.RegisterType<PrintAllBooksCommand>().Named<ICommand>("printallbooks").InstancePerDependency();
+            builder.RegisterType<RemoveBookCommand>().Named<ICommand>("removebook").InstancePerDependency();
+
 
         }
     }

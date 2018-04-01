@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Data.Common;
+using System.Data.Entity;
 using BookRanking.Data.Models;
 
 namespace BookRanking.Context
@@ -6,6 +7,11 @@ namespace BookRanking.Context
     public class BookRankingDbContext : DbContext, IBookRankingDbContext
     {
         public BookRankingDbContext() : base("BookRanking")
+        {
+        }
+
+        public BookRankingDbContext(DbConnection connection)
+            : base(connection, true)
         {
         }
 

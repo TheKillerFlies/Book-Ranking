@@ -11,13 +11,13 @@ namespace BookRanking.Engine.Commands
 {
     public abstract class Command: ICommand
     {
-        private readonly IDTOFactory DTOFactory;
+        protected readonly IDTOFactory DTOFactory;
        
         public Command(IDTOFactory DTOFactory)
         {
             this.DTOFactory = DTOFactory;
         }
 
-        public abstract object Execute(IList<string> parameters);
+        public abstract string Execute(IList<string> parameters);
     }
 }

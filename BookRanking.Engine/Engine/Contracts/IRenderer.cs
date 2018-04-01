@@ -9,6 +9,6 @@ namespace BookRanking.Engine.Engine.Contracts
     public interface IRenderer
     {
         IEnumerable<string> Input();
-        void Output(IEnumerable<string> output);
+        void Output(string output);
     }
 }
