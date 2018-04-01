@@ -1,4 +1,5 @@
-﻿using BookRanking.Engine.Commands.Contracts;
+﻿using BookRanking.DTO;
+using BookRanking.Engine.Commands.Contracts;
 using BookRanking.Engine.Factories.Contracts;
 using BookRanking.Logic.Contracts;
 using System;
@@ -28,7 +29,20 @@ namespace BookRanking.Engine.Commands
             var author = this.DTOFactory.CreateAuthorDTO(firstName, lastName, alias);
             var books = this.authorService.GetBooksByAuthor(author);
 
-            return books;
+            
+            return this.PrintBooks(books);
+        }
+
+        private string PrintBooks(IEnumerable<BookDTO> books)
+        {
+            var booksPrint = new StringBuilder();
+            foreach (var book in books)
+            {
+                booksPrint.AppendLine(string.Format("Title: {0} Year: {1}", book.Title, book.PublishedYear));
+            }
+
+            return booksPrint.ToString();
+
         }
     }
 }

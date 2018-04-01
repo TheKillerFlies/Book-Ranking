@@ -27,7 +27,8 @@ namespace BookRanking.Engine.Commands
 
             var author = this.DTOFactory.CreateAuthorDTO(firstName, lastName, alias);
             authorService.AddAuthor(author);
-            return "Author successful";
+
+            return Messages.authorAdded;
         }
     }
 }

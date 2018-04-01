@@ -23,7 +23,7 @@ namespace BookRanking.Engine.Commands
         {
             var alias = parameters[0];
             var author = this.authorService.GetAuthorByAlias(alias);
-            return "";
+            return string.Format("{0} {1}", author.FirstName, author.LastName);
         }
     }
 }

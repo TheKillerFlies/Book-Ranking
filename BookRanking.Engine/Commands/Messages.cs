@@ -8,6 +8,6 @@ namespace BookRanking.Engine.Commands
 {
     public static class Messages
     {
-     
+        public const string authorAdded = "Author successfully added!";
     }
 }
