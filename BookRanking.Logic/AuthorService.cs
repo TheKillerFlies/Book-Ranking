@@ -85,8 +85,8 @@ namespace BookRanking.Logic
 
         public AuthorDTO GetAuthorByAlias(string alias)
         {
-            var author = this.dbContext.Authors.First(x => x.Alias == alias);
-            return this.mapper.Map<AuthorDTO>(author);
+            var author = this.dbContext.Authors.FirstOrDefault(x => x.Alias == alias);
+            return author is null ? null : this.mapper.Map<AuthorDTO>(author);
         }
     }
 }

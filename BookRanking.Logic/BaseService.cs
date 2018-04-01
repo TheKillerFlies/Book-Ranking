@@ -4,7 +4,7 @@ using BookRanking.Logic.Contracts;
 
 namespace BookRanking.Logic
 {
-    public class BaseService: IBaseService
+    public abstract class BaseService: IBaseService
     {
         protected readonly IBookRankingDbContext dbContext;
         protected readonly IMapper mapper;
