@@ -11,17 +11,15 @@ namespace BookRanking.Engine.Commands
 {
     public class GetBooksByAuthorCommand : Command, ICommand
     {
-        private readonly IDTOFactory DTOFactory;
         private readonly IAuthorService authorService;
 
         public GetBooksByAuthorCommand(IDTOFactory DTOFactory, IAuthorService authorService)
             :base(DTOFactory)
         {
-            this.DTOFactory = DTOFactory;
             this.authorService = authorService;
         }
 
-        public override object Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
             var firstName = parameters[0];
             var lastName = parameters[1];
