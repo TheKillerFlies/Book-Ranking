@@ -22,7 +22,5 @@ namespace BookRanking.DTO
         public AuthorDTO Author { get; private set; }
 
         public PublisherDTO Publisher { get; private set; }
-
-    
     }
 }
