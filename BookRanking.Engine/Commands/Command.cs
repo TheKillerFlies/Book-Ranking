@@ -9,20 +9,15 @@ using System.Threading.Tasks;
 
 namespace BookRanking.Engine.Commands
 {
-    public class GetAuthorByAliasCommand : ICommand
+    public abstract class Command: ICommand
     {
         private readonly IDTOFactory DTOFactory;
-        private readonly IAuthorService authorService;
-
-        public GetAuthorByAliasCommand(IDTOFactory DTOFactory, IAuthorService authorService)
+       
+        public Command(IDTOFactory DTOFactory)
         {
             this.DTOFactory = DTOFactory;
-            this.authorService = authorService;
         }
 
-        public object Execute(IList<string> parameters)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract object Execute(IList<string> parameters);
     }
 }

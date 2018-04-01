@@ -55,9 +55,12 @@
     <Compile Include="Commands\AuthorCommands\AddAuthorCommand.cs" />
     <Compile Include="Commands\AuthorCommands\GetAllAuthorsCommand.cs" />
     <Compile Include="Commands\AuthorCommands\RemoveAuthorCommand.cs" />
+    <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\AuthorCommands\GetBooksByAuthorCommand.cs" />
     <Compile Include="Commands\GetAuthorByAliasCommand.cs" />
+    <Compile Include="Commands\PublisherCommands\AddPublisherCommand.cs" />
+    <Compile Include="Commands\PublisherCommands\GetAllPublishersCommand.cs" />
     <Compile Include="Engine\BookEngine.cs" />
     <Compile Include="Engine\ConsoleRenderer.cs" />
     <Compile Include="Engine\Contracts\IBookEngine.cs" />
@@ -93,6 +96,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Commands\BookCommands\" />
     <Folder Include="Models\Contracts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

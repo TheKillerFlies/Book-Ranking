@@ -38,7 +38,6 @@ namespace BookRanking.Client.Engine
 
             var commandName = commandParts[0];
             var commandParameters = commandParts.Skip(1).ToList();
-
             var command = this.factory.GetCommand(commandName.ToLower());
             command.Execute(commandParameters);
         }

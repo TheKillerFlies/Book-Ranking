@@ -14,6 +14,7 @@ using BookRanking.Data.Models;
 using BookRanking.Engine.Commands.Contracts;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using BookRanking.Client.Engine.Contracts;
 
 namespace BookRanking.Client
 {
@@ -26,10 +27,8 @@ namespace BookRanking.Client
             var injectionConfig = new AutofacModule();
             builder.RegisterModule(injectionConfig);
             var container = builder.Build();
-            var context = new BookRankingDbContext();
-            var authorService = new AuthorService(context, Mapper.Instance);
-            var publisherService = new PublisherService(context, Mapper.Instance);
-            var bookService = new BookService(authorService, publisherService, context, Mapper.Instance);
+            var engine = container.Resolve<IBookEngine>();
+            engine.Start();
         }
 
         private static void FillDbUsingJsonFiles(BookRankingDbContext context, AuthorService authorService, PublisherService publisherService, BookService bookService)

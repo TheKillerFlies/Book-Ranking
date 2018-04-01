@@ -9,17 +9,19 @@ using System.Threading.Tasks;
 
 namespace BookRanking.Engine.Commands
 {
-    public class AddAuthorCommand :ICommand
+    public class AddAuthorCommand :Command, ICommand
     {
         private readonly IDTOFactory DTOFactory;
-        private IAuthorService authorService;
+        private readonly IAuthorService authorService;
         public AddAuthorCommand(IDTOFactory DTOFactory, IAuthorService authorService)
+            : base(DTOFactory)
+
         {
             this.DTOFactory = DTOFactory;
             this.authorService = authorService;
         }
 
-        public object Execute(IList<string> parameters)
+        public override object Execute(IList<string> parameters)
         {
             var firstName = parameters[0];
             var lastName = parameters[1];
