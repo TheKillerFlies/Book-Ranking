@@ -60,7 +60,6 @@ namespace BookRanking.Logic
             {
                 throw new ArgumentException("This author already exists.");
             }
-            
         }
 
         public void RemoveAuthor(AuthorDTO author)
@@ -83,6 +82,7 @@ namespace BookRanking.Logic
                 throw new ArgumentException("The author you are trying to remove does not exist.");
             }
         }
+
         public AuthorDTO GetAuthorByAlias(string alias)
         {
             var author = this.dbContext.Authors.First(x => x.Alias == alias);

@@ -39,6 +39,12 @@ namespace BookRanking.Client
             var author = new AuthorDTO("Strphen", "Knig", "It");
             var book = new BookDTO("TheLake", 2000, publisher, author);
 
+            //var books = bookService.GetAllBooks();
+            //foreach (var item in books)
+            //{
+            //    Console.WriteLine(item.Title);
+            //}
+
             //authorService.AddAuthor(new AuthorDTO("Strphen", "Knig", "It"));
 
             //var authors = authorService.GetAllAuthors();
@@ -48,9 +54,11 @@ namespace BookRanking.Client
             //}
 
             //bookService.AddBook(book, author, publisher);
+            var bookFind = bookService.FindBookByTitle("The345Lake");
+            Console.WriteLine(book.Author.FirstName);
 
-            var aa = authorService.GetAuthorByAlias("alias34");
-            Console.WriteLine(aa.FirstName);
+            //var aa = authorService.GetAuthorByAlias("alias34");
+            //Console.WriteLine(aa.FirstName);
             //var authors = authorService.GetAllAuthors();
             //foreach (var item in authors)
             //{
@@ -69,8 +77,6 @@ namespace BookRanking.Client
             //}
             //var b = bookService.FindBookByTitle("kniga1");
             //Console.WriteLine(b.Publisher.Name);
-
-
         }
 
         private static void Init()
