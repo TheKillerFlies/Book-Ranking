@@ -46,8 +46,6 @@ namespace BookRanking.Client.AutofacModules
             builder.RegisterType<PrintAllBooksCommand>().Named<ICommand>("printallbooks").InstancePerDependency();
             builder.RegisterType<RemoveBookCommand>().Named<ICommand>("removebook").InstancePerDependency();
             builder.RegisterType<ExportAllAuthorsCommand>().Named<ICommand>("exportallauthors").InstancePerDependency();
-
-
         }
     }
 }

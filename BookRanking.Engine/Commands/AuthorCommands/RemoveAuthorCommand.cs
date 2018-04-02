@@ -15,7 +15,6 @@ namespace BookRanking.Engine.Commands.AuthorCommands
 
         public RemoveAuthorCommand(IDTOFactory DTOFactory, IAuthorService authorService)
             : base(DTOFactory)
-
         {
             this.authorService = authorService;
         }

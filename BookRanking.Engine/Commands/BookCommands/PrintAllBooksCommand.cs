@@ -31,7 +31,7 @@ namespace BookRanking.Engine.Commands.BookCommands
             var booksPrint = new StringBuilder();
             foreach (var book in books)
             {
-                booksPrint.AppendLine(string.Format("Title:{0}, Year: {1}, Author: {2} {3}", book.Title, book.PublishedYear, book.Author.FirstName, book.Author.LastName));
+                booksPrint.AppendLine(string.Format("Title:{0}, Year: {1}", book.Title, book.PublishedYear));
             }
 
             return booksPrint.ToString();

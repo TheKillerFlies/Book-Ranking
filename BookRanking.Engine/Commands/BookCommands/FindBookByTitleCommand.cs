@@ -28,7 +28,7 @@ namespace BookRanking.Engine.Commands.BookCommands
 
         private string PrintBook(BookDTO book)
         {
-            return string.Format("Author: {0} {1}, Year:{2}", book.Author.FirstName, book.Author.LastName, book.PublishedYear);
+            return string.Format("Title: {0}, Year:{1}",book.Title, book.PublishedYear);
         }
     }
 }

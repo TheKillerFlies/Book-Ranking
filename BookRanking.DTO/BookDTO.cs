@@ -5,8 +5,13 @@ using System.Collections.Generic;
 
 namespace BookRanking.DTO
 {
-    public class BookDTO :  IMapTo<Book>
+    public class BookDTO : IMapTo<Book>
     {
+        public BookDTO()
+        {
+
+        }
+
         public BookDTO(string title, int publishedYear, PublisherDTO publisher, AuthorDTO author)
         {
             this.Title = title;

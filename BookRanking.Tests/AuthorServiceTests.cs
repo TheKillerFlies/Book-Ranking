@@ -7,7 +7,6 @@ using BookRanking.Context;
 using BookRanking.Data.Models;
 using BookRanking.DTO;
 using BookRanking.Logic;
-using Effort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

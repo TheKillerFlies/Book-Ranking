@@ -25,14 +25,18 @@ namespace BookRanking.Client
             var injectionConfig = new AutofacModule();
             builder.RegisterModule(injectionConfig);
             var container = builder.Build();
+
             //var context = new BookRankingDbContext();
             //var authorService = new AuthorService(context, Mapper.Instance);
             //var publisherService = new PublisherService(context, Mapper.Instance);
             //var bookService = new BookService(authorService, publisherService, context, Mapper.Instance);
+            //FillDbUsingJsonFiles(context, authorService,  publisherService, bookService);
+
             //var publisher = new PublisherDTO("Publisher");
             //var author = new AuthorDTO("Name1", "Name2", "Alias");
             //var book = new BookDTO("Kniga", 2000, publisher, author);
             //bookService.AddBook(book);
+
             var engine = container.Resolve<IBookEngine>();
             engine.Start();
         }

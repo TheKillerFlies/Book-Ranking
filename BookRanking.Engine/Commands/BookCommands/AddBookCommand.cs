@@ -11,7 +11,6 @@ namespace BookRanking.Engine.Commands.BookCommands
 {
     public class AddBookCommand : Command, ICommand
     {
-
         private readonly IBookService bookService;
 
         public AddBookCommand(IDTOFactory DTOFactory, IBookService bookService)
@@ -22,7 +21,6 @@ namespace BookRanking.Engine.Commands.BookCommands
 
         public override string Execute(IList<string> parameters)
         {
-            
             var title = parameters[0];
             var year = parameters[1];
             var publisherName = parameters[2];
